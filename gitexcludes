@@ -1,0 +1,10 @@
+# Here are all filetypes which should be ignored in all git repositories
+
+*.swp
+*.swo
+tags
+.buffer.scratch
+.rake_tasks~
+.rspec
+.rspec.output
+.deprecations
