@@ -22,8 +22,8 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
 
-if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
+if filereadable(expand("~/.config/nvim/plugs.vim"))
+  source ~/.config/nvim/plugs.vim
 endif
 
 " Load matchit.vim, but only if the user hasn't installed a newer version.
@@ -172,7 +172,7 @@ set complete+=kspell
 " Always use vertical diffs
 set diffopt+=vertical
 
-" Local config
-if filereadable($HOME . "/.vimrc.local")
-  source ~/.vimrc.local
+" Extra mappings file
+if filereadable($HOME . "/.config/nvim/mappings.vim")
+  source ~/.config/nvim/mappings.vim
 endif
