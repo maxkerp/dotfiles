@@ -1,9 +1,25 @@
 # Unix
+alias dirs="ls -1d */"
+alias e="$EDITOR"
+alias files="ls -p | grep -v /"
+alias gopen='gnome-open'
+alias l='ls -lF'
+alias la='ls -AF'
 alias ll="ls -al"
+alias ll='ls -alF'
 alias ln="ln -v"
 alias mkdir="mkdir -p"
-alias e="$EDITOR"
 alias v="$VISUAL"
+
+# Pretty print the path
+alias path='echo $PATH | tr -s ":" "\n"'
+
+# Git
+alias dh='git diff HEAD'
+alias s='git status -s'
+alias staged='git diff --staged'
+alias unstaged='git diff'
+alias u='git add -u'
 
 # Bundler
 alias b="bundle"
@@ -12,8 +28,25 @@ alias b="bundle"
 alias migrate="rake db:migrate db:rollback && rake db:migrate db:test:prepare"
 alias s="rspec"
 
-# Pretty print the path
-alias path='echo $PATH | tr -s ":" "\n"'
+# RSpec
+# Requires config.example_status_persistence_file_path to be set.
+alias f='rspec --only-failures'
+alias n='rspec --next'
 
-# Include custom aliases
-[[ -f ~/.aliases.local ]] && source ~/.aliases.local
+# Modified ruby files compared to MASTER (all modified files)
+alias modified_app_files='git diff --diff-filter=AM --name-status master..HEAD | grep .rb | cut -c 3- | paste -sd " "'
+
+# Modified spec files compared to MASTER (all modified specs)
+alias modified_spec_files='git diff --diff-filter=AM --name-status master..HEAD | grep _spec.rb | cut -c 3- | paste -sd " "'
+#
+# Modified ruby files on CURRENT BRANCH (current modified files)
+alias current_modified_files='git diff --diff-filter=AM --name-status HEAD | grep .rb | cut -c 3- | paste -sd " "'
+
+# Modified spec files on CURRENT BRANCH (current modified specs)
+alias current_modified_specs='git diff --diff-filter=AM --name-status HEAD | grep _spec.rb | cut -c 3- | paste -sd " "'
+
+alias lint_current_modified_files='bundle exec rubocop $(current_modified_files)'
+alias lint_current_modified_specs='bundle exec rubocop $(current_modified_specs)'
+
+alias run_current_modified_specs='bundle exec rspec $(current_modified_specs)'
+alias changed_specs='run_current_modified_specs'
