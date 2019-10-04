@@ -18,7 +18,7 @@ call plug#begin('~/.config/nvim/bundle')
 Plug 'christoomey/vim-run-interactive'
 
 if executable('fzf')
-  Plug '/usr/local/opt/fzf'
+  Plug '~/.fzf'
 else
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 endif
