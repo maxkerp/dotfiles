@@ -81,6 +81,7 @@ Plug 'vim-airline/vim-airline-themes'
 " Syntaxes
 " ---------
 
+Plug 'cespare/vim-toml'
 Plug 'elixir-lang/vim-elixir'
 Plug 'fatih/vim-go'
 Plug 'kchmck/vim-coffee-script'

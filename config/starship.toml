@@ -1,0 +1,16 @@
+# Don't print a new line at the start of the prompt
+# add_newline = false
+
+# Replace the "❯" symbol in the prompt with "➜"
+[character]
+symbol = "➜"
+error_symbol = "✗"
+use_symbol_for_status = true
+
+[[battery.display]]
+threshold = 30
+style = "bold red"
+
+[time]
+disabled = false
+
