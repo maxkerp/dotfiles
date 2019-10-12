@@ -1,0 +1,98 @@
+
+window:
+  gtk_theme_variant: dark
+
+scrolling:
+  history: 10000
+
+font:
+  size: 15
+  normal:
+    family: "Roboto Mono for Powerline"
+    style: Regular
+  bold:
+    family: "Roboto Mono for Powerline"
+  italic:
+    family: "Roboto Mono for Powerline"
+
+
+draw_bold_text_with_bright_colors: false
+
+# Base16 Tomorrow Night - alacritty color config
+# Chris Kempson (http://chriskempson.com)
+colors:
+  primary:
+    background: '0x1d1f21'
+    foreground: '0xc5c8c6'
+
+  cursor:
+    text: '0x1d1f21'
+    cursor: '0xc5c8c6'
+
+  normal:
+    black:   '0x1d1f21'
+    red:     '0xcc6666'
+    green:   '0xb5bd68'
+    yellow:  '0xf0c674'
+    blue:    '0x81a2be'
+    magenta: '0xb294bb'
+    cyan:    '0x8abeb7'
+    white:   '0xc5c8c6'
+
+  bright:
+    black:   '0x969896'
+    red:     '0xde935f'
+    green:   '0x282a2e'
+    yellow:  '0x373b41'
+    blue:    '0xb4b7b4'
+    magenta: '0xe0e0e0'
+    cyan:    '0xa3685a'
+    white:   '0xffffff'
+
+# Shell
+#
+# You can set `shell.program` to the path of your favorite shell, e.g. `/bin/fish`.
+# Entries in `shell.args` are passed unmodified as arguments to the shell.
+#
+# Default:
+#   - (macOS) /bin/bash --login
+#   - (Linux) user login shell
+#   - (Windows) powershell
+#shell:
+#  program: /bin/bash
+#  args:
+#    - --login
+
+mouse:
+  url:
+    launcher:
+      program: xdg-open
+
+mouse_bindings:
+  - { mouse: Middle, action: PasteSelection }
+
+# Bindings are always filled by default, but will be replaced when a new
+# binding with the same triggers is defined. To unset a default binding, it can
+# be mapped to the `ReceiveChar` action. Alternatively, you can use `None` for
+# a no-op if you do not wish to receive input characters for that binding.
+key_bindings:
+  # (Windows/Linux only)
+  - { key: V,        mods: Control|Shift, action: Paste            }
+  - { key: C,        mods: Control|Shift, action: Copy             }
+  - { key: Insert,   mods: Shift,         action: PasteSelection   }
+  - { key: Key0,     mods: Control,       action: ResetFontSize    }
+  - { key: Equals,   mods: Control,       action: IncreaseFontSize }
+  - { key: Add,      mods: Control,       action: IncreaseFontSize }
+  - { key: Subtract, mods: Control,       action: DecreaseFontSize }
+  - { key: Minus,    mods: Control,       action: DecreaseFontSize }
+  - { key: Return,   mods: Alt,           action: ToggleFullscreen }
+
+  - { key: Paste,                    action: Paste                      }
+  - { key: Copy,                     action: Copy                       }
+  - { key: L,         mods: Control, action: ClearLogNotice             }
+  - { key: L,         mods: Control, chars: "\x0c"                      }
+  - { key: PageUp,    mods: Shift,   action: ScrollPageUp,   mode: ~Alt }
+  - { key: PageDown,  mods: Shift,   action: ScrollPageDown, mode: ~Alt }
+  - { key: Home,      mods: Shift,   action: ScrollToTop,    mode: ~Alt }
+  - { key: End,       mods: Shift,   action: ScrollToBottom, mode: ~Alt }
+
