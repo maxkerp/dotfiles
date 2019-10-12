@@ -26,7 +26,6 @@ alias b="bundle"
 
 # Rails
 alias migrate="rake db:migrate db:rollback && rake db:migrate db:test:prepare"
-alias s="rspec"
 
 # RSpec
 # Requires config.example_status_persistence_file_path to be set.
