@@ -145,6 +145,40 @@ nnoremap zO zczO
 " Productivity
 nnoremap <silent> <leader>w :ArgWrap<CR>
 
+" ---------------------- Mappings from Thoughbot
+" Switch between the last two files
+nnoremap <Leader><Leader> <C-^>
+
+" Get off my lawn
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
+
+" vim-test mappings
+nnoremap <silent> <Leader>t :TestFile<CR>
+nnoremap <silent> <Leader>s :TestNearest<CR>
+nnoremap <silent> <Leader>l :TestLast<CR>
+nnoremap <silent> <Leader>a :TestSuite<CR>
+nnoremap <silent> <Leader>gt :TestVisit<CR>
+
+" Run commands that require an interactive shell
+nnoremap <Leader>r :RunInInteractiveShell<Space>
+
+" Quicker window movement
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+" Move between linting errors
+nnoremap ]r :ALENextWrap<CR>
+nnoremap [r :ALEPreviousWrap<CR>
+
+" Map Ctrl + p to open fuzzy find (FZF)
+nnoremap <c-p> :Files<cr>
+" ---------------------- 
+
 "}}}
 
 " }}}

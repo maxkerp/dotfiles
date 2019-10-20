@@ -67,6 +67,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'edkolev/tmuxline.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'janko-m/vim-test'
+Plug 'christoomey/vim-tmux-navigator'
 
 " Themes
 " -------
