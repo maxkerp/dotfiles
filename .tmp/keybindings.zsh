@@ -116,3 +116,10 @@ bindkey "^[m" copy-prev-shell-word
 #bindkey -s '^[[Z' '\t'
 #
 
+# Change git-branch
+# fzf-git-branch-widget() {
+#   git branch | fzf --height=20 | xargs git checkout
+# }
+# zle     -N    fzf-git-branch-widget
+# bindkey '\ec' fzf-git-branch-widget
+
