@@ -25,6 +25,7 @@ nnoremap <leader>o :only<cr>
 nnoremap <leader>wo <c-w>T
 
 nnoremap <leader>ei :tabnew ~/.config/nvim/init.vim<cr>
+nnoremap <leader>si :source ~/.config/nvim/init.vim<cr>\| :echom "init.vim reloaded"<cr>
 
 nnoremap ; :
 nnoremap <C-s> :set hlsearch!<cr>
@@ -166,7 +167,7 @@ nnoremap <Down> :echoe "Use j"<CR>
 nnoremap <silent> <Leader>t :TestFile<CR>
 nnoremap <silent> <Leader>s :TestNearest<CR>
 nnoremap <silent> <Leader>l :TestLast<CR>
-nnoremap <silent> <Leader>a :TestSuite<CR>
+nnoremap <silent> <Leader>ta :TestSuite<CR>
 nnoremap <silent> <Leader>gt :TestVisit<CR>
 
 " Run commands that require an interactive shell

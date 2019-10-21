@@ -15,6 +15,7 @@ alias v="$VISUAL"
 alias path='echo $PATH | tr -s ":" "\n"'
 
 # Git
+alias br='git branch | fzf --reverse --height=40% | xargs git checkout'
 alias dh='git diff HEAD'
 alias s='git status -s'
 alias staged='git diff --staged'

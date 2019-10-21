@@ -38,3 +38,5 @@
   ps = push
   s = status
   st = status
+  hidden = !git ls-files -v | grep \"^[[:lower:]]\"
+  prune-merged-branches = !git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -d
