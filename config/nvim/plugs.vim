@@ -56,7 +56,7 @@ Plug 'pbrisbin/vim-mkdir'
 
 " Plug 'ctrlpvim/ctrlp.vim' " Temporaily commented out since thoughtbot uses fzf
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'majutsushi/tagbar'
+" Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim'
 Plug 'junegunn/fzf.vim'
 

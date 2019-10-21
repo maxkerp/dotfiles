@@ -1,48 +1,71 @@
-"{{{ Autocommands
+"{{{ ---------------------- Autocommands
 "
-let mapleader = ","
 
 au BufEnter *.rb syn match error contained "\<binding.pry\>"
 au BufEnter *.rb syn match error contained "\<TODO\>"
+
 
 " autocmd VimEnter * AirlineTheme term
 " autocmd VimEnter * AirlineTheme base16_shell
 au VimEnter * highlight MatchParen guifg=#cc6666 guibg=#f0c674
 
+au FileType vim set foldmethod=marker foldlevel=0
 au FileType ruby EnableStripWhitespaceOnSave
 
 "}}}
 
-set background=dark
-set expandtab
-set nobackup
-set noswapfile
-set nowrap
-set number
-set pastetoggle=<F2>
-set relativenumber
-set shiftwidth=2
-set so=999
-set tabstop=2
-set termguicolors
-"set virtualedit=all
+"{{{ ---------------------- General Settings
+
 
 nnoremap <leader>9 :setlocal spelllang=de spell<cr>
 nnoremap <leader>0 :hi SpellBad ctermfg=1 ctermbg=10 gui=bold guifg=#cc6666 guibg=#282a2e<cr>
+nnoremap <silent> <leader>8 :se tw=80<cr>
+
+nnoremap <leader>o :only<cr>
+nnoremap <leader>wo <c-w>T
 
 nnoremap <leader>ei :tabnew ~/.config/nvim/init.vim<cr>
-nnoremap <leader>cp :Goyo<cr>
+
+nnoremap ; :
+nnoremap <C-s> :set hlsearch!<cr>
+inoremap jj <ESC>
+inoremap <PageUp> <Nop>
+inoremap <PageDown> <Nop>
+
+" Copy file path to clipboard
 nnoremap <silent> <leader>cf :let @+=expand("%")<CR>
+
+" Toggle folds with space
+nnoremap <Space> za
+vnoremap <Space> za
+
+"}}}
+
+
+nnoremap <leader>cp :Goyo<cr>
+
 
 nnoremap <leader>1 Obinding.pry<ESC>0:w<cr>
 nnoremap <leader>2 O<% binding.pry%><ESC>0:w<cr>
 nnoremap <leader>3 O- binding.pry<ESC>0:w<cr>
 
-nnoremap <leader>a viwy:Ack! <C-R>" app/ spec/ lib/ config/<cr>
+"{{{ ---------------------- Finding stuff
 
-nnoremap <silent> <leader>8 :se tw=80<cr>
-nnoremap <leader>o :only<cr>
-nnoremap <leader>wo <c-w>T
+
+" Search for word under cursor in project
+nnoremap <leader>a viwy:Ack! <C-R>" app/ lib/ config/<cr>
+nnoremap <leader>s viwy:Ack! <C-R>" spec/<cr>
+
+" Search for visually selected text in project
+vnoremap <leader>a y:Ack! "<C-R>"" app/ lib/ config/<cr>
+vnoremap <leader>s y:Ack! "<C-R>"" spec/<cr>
+
+" Search for visually selected text in file
+:vnoremap // y/<C-R>"<cr>
+
+
+"}}}
+
 
 vnoremap <leader>y "+y
 nnoremap <leader>p "+gp
@@ -69,17 +92,7 @@ nnoremap <leader>ll :lne<cr>
 " Whitespace
 nnoremap <leader>sw :StripWhitespace<CR>
 
-" Search for visually selected text
-:vnoremap // y/<C-R>"<cr>
 
-nnoremap ; :
-nnoremap <C-s> :set hlsearch!<cr>
-inoremap jj <ESC>
-inoremap <PageUp> <Nop>
-inoremap <PageDown> <Nop>
-
-":noremap y "+Y
-":noremap p "+gP
 
 nnoremap <silent> L :tabnext<cr>
 nnoremap <silent> H :tabprevious<cr>
@@ -116,14 +129,8 @@ let g:scratch_height = 15
 let g:scratch_persistence_file = '.buffer.scratch'
 nnoremap ss :ScratchPreview<cr>
 nnoremap SS :Scratch<cr>
-nnoremap <leader>s :ScratchInsert<cr>
 
-set foldmethod=syntax
-set foldlevelstart=1
 
-" Space to toggle folds.
-nnoremap <Space> za
-vnoremap <Space> za
 
 " Make zO recursively open whatever fold we're in, even if it's partially open.
 nnoremap zO zczO

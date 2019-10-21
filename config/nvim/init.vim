@@ -1,19 +1,22 @@
 
-" ---------------------- General Settings
+"{{{ ---------------------- General Settings
 
 " Leader
 let mapleader = ","
 
 set encoding=utf-8
 set incsearch
+
 set nobackup
 set nowritebackup
 set noswapfile
 
 " Automatically :write before running commands
 set autowrite
+
 " Display incomplete commands
 set showcmd
+
 " Always display the status line
 set laststatus=2
 
@@ -28,7 +31,14 @@ set diffopt+=vertical
 set splitbelow
 set splitright
 
-
+" From mappings.vim
+set background=dark
+set nowrap
+set pastetoggle=<F2>
+set so=100
+set termguicolors
+set foldmethod=syntax
+set foldlevelstart=1
 
 
 
@@ -38,7 +48,9 @@ filetype plugin indent on
 " Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
 set spellfile=$HOME/.vim-spell-en.utf-8.add
 
-" ---------------------- Visuals
+"}}}
+
+"{{{ ---------------------- Visuals
 
 
 " Show the cursor position all the time
@@ -50,12 +62,14 @@ set colorcolumn=+1
 " Numbers
 set number
 set numberwidth=5
+set relativenumber
 
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
 
+"}}}
 
-" ---------------------- Editing
+"{{{ ---------------------- Editing
 
 
 " Softtabs, 2 spaces
@@ -73,10 +87,10 @@ set nojoinspaces
 " Autocomplete with dictionary words when spell check is on
 set complete+=kspell
 
-
-
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
+
+"}}}
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
