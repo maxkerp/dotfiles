@@ -1,6 +1,6 @@
 [user]
   name = Maximilian Kerp
-  email =
+  email = kerp@taktsoft.com
 [init]
   templatedir = ~/.git_template
 [core]
@@ -11,8 +11,6 @@
   default = current
 [pull]
   default = current
-[merge]
-  ff = only
 [fetch]
   prune = true
 [rebase]
