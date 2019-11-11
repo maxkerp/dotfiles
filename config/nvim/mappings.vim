@@ -99,8 +99,8 @@ nnoremap <silent> L :tabnext<cr>
 nnoremap <silent> H :tabprevious<cr>
 nnoremap <silent> <leader>` :edit /home/taktsoft/Wiki/elSa.md<cr>
 
-" nnoremap <C-l> 3zl
-" nnoremap <C-h> 3zh
+nnoremap <C-f> 3zl
+nnoremap <C-b> 3zh
 
 autocmd FileType nerdtree nmap <buffer> l o
 autocmd FileType nerdtree nmap <buffer> h x
