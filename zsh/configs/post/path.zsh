@@ -5,7 +5,7 @@ PATH="$HOME/.bin:/usr/local/sbin:$PATH"
 if [ -f "$HOME/.asdf/asdf.sh" ]; then
   . "$HOME/.asdf/asdf.sh"
 elif which brew >/dev/null &&
-  BREW_DIR="$(dirname `which brew`)/.." &&
+  BREW_DIR="$(dirname "$(which brew)")/.." &&
   [ -f "$BREW_DIR/opt/asdf/asdf.sh" ]; then
   . "$BREW_DIR/opt/asdf/asdf.sh"
 fi
@@ -16,6 +16,21 @@ PATH=".git/safe/../../bin:$PATH"
 # Extend Path with cargo binaries
 if [ -d "$HOME/.cargo/bin" ]; then
   PATH="$PATH:$HOME/.cargo/bin"
+fi
+
+if [ -d "$HOME/.nvm" ]; then
+  export NVM_DIR="$HOME/.nvm"
+
+  # This loads nvm
+  if [ -s "$NVM_DIR/nvm.sh" ]; then
+    source "$NVM_DIR/nvm.sh"
+  fi
+
+  # This loads nvm bash_completion
+  if [ -s "$NVM_DIR/bash_completion" ]; then
+    source "$NVM_DIR/bash_completion"
+  fi
+
 fi
 
 export -U PATH
