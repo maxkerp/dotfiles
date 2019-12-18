@@ -90,6 +90,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'rodjek/vim-puppet'
 Plug 'slim-template/vim-slim'
 Plug 'vim-ruby/vim-ruby'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'amiorin/vim-textile'
 
 " Languages and Frameworks
 Plug 'tpope/vim-bundler'
