@@ -10,6 +10,8 @@ alias ll='ls -alF'
 alias ln="ln -v"
 alias mkdir="mkdir -p"
 alias v="$VISUAL"
+alias vi="nvim"
+alias ".."="source ~/.zshrc"
 
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
