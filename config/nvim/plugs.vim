@@ -50,6 +50,8 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-repeat'
 Plug 'vim-scripts/tComment'
 Plug 'pbrisbin/vim-mkdir'
+Plug 'kana/vim-textobj-user'
+Plug 'rhysd/vim-textobj-ruby'
 
 " Finding stuff
 " --------------
