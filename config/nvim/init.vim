@@ -11,8 +11,14 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+" Use maximum history size
+set history=10000
+
 " Automatically :write before running commands
 set autowrite
+
+" Automatically reload unchanged buffers when the underlying files change
+set autoread
 
 " Display incomplete commands
 set showcmd
