@@ -1,9 +1,7 @@
 "{{{ ---------------------- Autocommands
-"
 
 au BufEnter *.rb syn match error contained "\<binding.pry\>"
 au BufEnter *.rb syn match error contained "\<TODO\>"
-
 
 " autocmd VimEnter * AirlineTheme term
 " autocmd VimEnter * AirlineTheme base16_shell
@@ -12,10 +10,19 @@ au VimEnter * highlight MatchParen guifg=#cc6666 guibg=#f0c674
 au FileType vim set foldmethod=marker foldlevel=0
 au FileType ruby EnableStripWhitespaceOnSave
 
+augroup MagitCustom
+  autocmd!
+
+  au FileType magit set scrolloff=100
+  " TODO figure out how to unmap a plugin mapping
+  " au FileType magit nunmap L
+  " au FileType magit nnoremap <silent> L :tabnext<cr>
+  au FileType magit nnoremap <silent> H :tabprevious<cr>
+augroup END
+
 "}}}
 
 "{{{ ---------------------- General Settings
-
 
 nnoremap <leader>9 :setlocal spelllang=de spell<cr>
 nnoremap <leader>0 :hi SpellBad ctermfg=1 ctermbg=10 gui=bold guifg=#cc6666 guibg=#282a2e<cr>
@@ -25,7 +32,12 @@ nnoremap <leader>o :only<cr>
 nnoremap <leader>wo <c-w>T
 
 nnoremap <leader>ei :tabnew ~/.config/nvim/init.vim<cr>
+nnoremap <leader>em :tabnew ~/.config/nvim/mappings.vim<cr>
+nnoremap <leader>ep :tabnew ~/.config/nvim/plugs.vim<cr>
 nnoremap <leader>si :source ~/.config/nvim/init.vim<cr>\| :echom "init.vim reloaded"<cr>
+
+" TODO Open a projects' WIKI page dynamically
+nnoremap <silent> <leader>` :edit /home/taktsoft/Wiki/elSa.md<cr>
 
 nnoremap ; :
 nnoremap <C-s> :set hlsearch!<cr>
@@ -42,13 +54,11 @@ vnoremap <Space> za
 
 "}}}
 
-
-nnoremap <leader>cp :Goyo<cr>
-
-
+"{{{ ---------------------- Syntax
 nnoremap <leader>1 Obinding.pry<ESC>0:w<cr>
 nnoremap <leader>2 O<% binding.pry%><ESC>0:w<cr>
 nnoremap <leader>3 O- binding.pry<ESC>0:w<cr>
+"}}}
 
 "{{{ ---------------------- Finding stuff
 
@@ -67,14 +77,28 @@ vnoremap <leader>s y:Ack! "<C-R>"" spec/<cr>
 
 "}}}
 
+"{{{ ---------------------- Windows/Panes
 
-vnoremap <leader>y "+y
-nnoremap <leader>p "+gp
-nnoremap <leader>P "+gP
+" Move viewport vertically
+nnoremap <C-f> 3zl
+nnoremap <C-b> 3zh
 
-" Visual Mode
-" vnoremap > >gv
-" vnoremap < <gv
+" Move through tabs
+nnoremap <silent> L :tabnext<cr>
+nnoremap <silent> H :tabprevious<cr>
+
+" Resize panes
+nnoremap <Left> <c-w><
+nnoremap <Right> <c-w>>
+nnoremap <Up> <c-w>+
+nnoremap <Down> <c-w>-
+
+"}}}
+
+"{{{ ---------------------- Navigating Files
+
+" Switch between the last two files
+nnoremap <Leader><Leader> <C-^>
 
 " Quickfix navigation
 nnoremap <leader>qo :cw<cr>
@@ -90,78 +114,56 @@ nnoremap <leader>ll :lne<cr>
 " nnoremap <silent> <C-k> :lpr<cr>
 " nnoremap <silent> <C-j> :lne<cr>
 
+"}}}
+
+"{{{ ---------------------- Navigating Text
+
+"}}}
+
+"{{{ ---------------------- Working with Text
+
+vnoremap <leader>y "+y
+nnoremap <leader>p "+gp
+nnoremap <leader>P "+gP
+
+" Visual Mode
+" vnoremap > >gv
+" vnoremap < <gv
+
 " Whitespace
 nnoremap <leader>sw :StripWhitespace<CR>
 
+" Focus on the text
+nnoremap <leader>cp :Goyo<cr>
 
+"}}}
 
-nnoremap <silent> L :tabnext<cr>
-nnoremap <silent> H :tabprevious<cr>
-nnoremap <silent> <leader>` :edit /home/taktsoft/Wiki/elSa.md<cr>
+"{{{ ---------------------- Plugins
 
-nnoremap <C-f> 3zl
-nnoremap <C-b> 3zh
-
+" Open/Close directories and or files with l,h, and space
 autocmd FileType nerdtree nmap <buffer> l o
 autocmd FileType nerdtree nmap <buffer> h x
 autocmd FileType nerdtree nmap <buffer> <Space> o
+
+" Toggle file tree wich <C-n>
 map <C-n> :NERDTreeToggle<CR>
-"}}}
 
 nnoremap <F3> :Tagbar<cr>
-"}}}
-
-nnoremap <silent> tn :TestNearest<CR>
-nnoremap <silent> tf :TestFile<CR>
-nnoremap <silent> tt :TestLast<CR>
-nnoremap <silent> tv :TestVisit<CR>
 
 nnoremap <leader>gb :Gblame<cr>
 
-" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-vmap <CR> <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
-set hidden
-let g:scratch_no_mappings = 1
-"let g:scratch_insert_autohide = 1
-let g:scratch_height = 15
-let g:scratch_persistence_file = '.buffer.scratch'
-nnoremap ss :ScratchPreview<cr>
-nnoremap SS :Scratch<cr>
-
-
-
-" Make zO recursively open whatever fold we're in, even if it's partially open.
-nnoremap zO zczO
-
-" "Focus" the current line.  Basically:
-"
-" 1. Close all folds.
-" 2. Open just the folds containing the current line.
-" 3. Move the line to a little bit (15 lines) above the center of the screen.
-" 4. Pulse the cursor line.  My eyes are bad.
-"
-" This mapping wipes out the z mark, which I never use.
-"
-" I use :sus for the rare times I want to actually background Vim.
-" nnoremap <c-z> mzzMzvzz15<c-e>`z
-
-"{{{ Plugins
-
-" Productivity
+" Start ArgWrap
 nnoremap <silent> <leader>w :ArgWrap<CR>
 
-" ---------------------- Mappings from Thoughbot
-" Switch between the last two files
-nnoremap <Leader><Leader> <C-^>
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <CR> <Plug>(EasyAlign)
 
-" Get off my lawn
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+"}}}
+
+"{{{ ---------------------- Mappings from Thoughbot
+
 
 " vim-test mappings
 nnoremap <silent> <Leader>t :TestFile<CR>
@@ -185,11 +187,59 @@ nnoremap [r :ALEPreviousWrap<CR>
 
 " Map Ctrl + p to open fuzzy find (FZF)
 nnoremap <c-p> :Files<cr>
-" ---------------------- 
+"}}} ---------------------- 
+
+"{{{ ---------------------- Running Stuff
 
 "}}}
 
-" }}}
+"{{{ ---------------------- DISABLED
+
+" nnoremap <silent> tn :TestNearest<CR>
+" nnoremap <silent> tf :TestFile<CR>
+" nnoremap <silent> tt :TestLast<CR>
+" nnoremap <silent> tv :TestVisit<CR>
+
+"}}}
+
+"{{{ ---------------------- Template
+
+"}}}
+
+
+" -------------------------
+"
+" Lines beneath this comment still need to be moved in the right section
+" or to a different file.
+"
+" -------------------------
+
+set hidden
+let g:scratch_no_mappings = 1
+"let g:scratch_insert_autohide = 1
+let g:scratch_height = 15
+let g:scratch_persistence_file = '.buffer.scratch'
+nnoremap ss :ScratchPreview<cr>
+nnoremap SS :Scratch<cr>
+
+
+
+nnoremap zO zczO
+
+" Make zO recursively open whatever fold we're in, even if it's partially open.
+" "Focus" the current line.  Basically:
+"
+" 1. Close all folds.
+" 2. Open just the folds containing the current line.
+" 3. Move the line to a little bit (15 lines) above the center of the screen.
+" 4. Pulse the cursor line.  My eyes are bad.
+"
+" This mapping wipes out the z mark, which I never use.
+"
+" I use :sus for the rare times I want to actually background Vim.
+" nnoremap <c-z> mzzMzvzz15<c-e>`z
+
+
 
 if executable('rg')
   let g:ackprg = 'rg --vimgrep'
@@ -239,9 +289,7 @@ let g:better_whitespace_guicolor='#cc6666'
 "   if getline(v:lnum) =~? '^\s*$'
 "       return '-1'
 "   endif
-
 "   let header = getline(v:lnum) =~ '^#\+ .*$'
-
 "   if empty(header)
 "     return "="
 "   else
