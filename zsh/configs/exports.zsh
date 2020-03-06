@@ -1,5 +1,5 @@
 # FZF Base16 Tomorrow Night Theme
-# Big thankgs to the following sources:
+# Big thanks to the following sources:
 #
 # https://minsw.github.io/fzf-color-picker/
 # https://github.com/chriskempson/base16-tomorrow-scheme/blob/master/tomorrow-night.yaml
