@@ -1,7 +1,11 @@
 apg
+borgbackup
 build-essential
 cmake
+containerd.io
 curl
+docker-ce
+docker-ce-cli
 firefox
 git
 gnome-open
@@ -11,6 +15,7 @@ libfontconfig1-dev
 libfreetype6-dev
 libfreetype6-dev
 liblzma-dev
+libmysqlclient-dev
 libpq-dev
 libxcb-xfixes0-dev
 mysql-server
@@ -23,6 +28,7 @@ postgresql
 postgresql-contrib
 rcm
 rsync
+software-properties-common
 thunderbird
 tig
 tmux
