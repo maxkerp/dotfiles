@@ -68,3 +68,16 @@ function aptexplore(){
 function manexplore(){
   apropos $1 | fzf --reverse | cut -d' ' -f1 | xargs man
 }
+
+function create_aptfile(){
+  grep "^sudo.*apt.* install" ~/.zhistory \
+  | sed -E "s/.*sudo apt.* install//" \
+  | sed -E "s/--.* //" \
+  | tr " " "\n" \
+  | grep -v -e "^$" \
+  | sort \
+  | uniq \
+  | comm -13 ~/dotfiles/Aptfile - \
+  > ~/dotfiles/Aptfile.tmp
+
+}
