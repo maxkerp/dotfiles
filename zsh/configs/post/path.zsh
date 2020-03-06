@@ -18,6 +18,7 @@ if [ -d "$HOME/.cargo/bin" ]; then
   PATH="$PATH:$HOME/.cargo/bin"
 fi
 
+# Load nvm
 if [ -d "$HOME/.nvm" ]; then
   export NVM_DIR="$HOME/.nvm"
 
@@ -31,6 +32,14 @@ if [ -d "$HOME/.nvm" ]; then
     source "$NVM_DIR/bash_completion"
   fi
 
+fi
+
+# Load z
+if [ -d "$HOME/.local/bin/git/z" ]; then
+
+  if [ -s "$HOME/.local/bin/git/z/z.sh" ]; then
+    source "$HOME/.local/bin/git/z/z.sh"
+  fi
 fi
 
 export -U PATH
