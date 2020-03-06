@@ -37,6 +37,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'jreybert/vimagit'
+Plug 'gregsexton/gitv'
 
 " Formatting and working with text
 " ---------------------------------
