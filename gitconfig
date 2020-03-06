@@ -4,9 +4,10 @@
 [init]
   templatedir = ~/.git_template
 [core]
+  autocrlf = input
   editor = nvim
   excludesfile = ~/.gitexcludes
-  autocrlf = input
+  pager="diff-so-fancy | less --tabs=4 -RFX"
 [push]
   default = current
 [pull]
@@ -18,9 +19,7 @@
 [commit]
   template = ~/.gitmessage
 [diff]
-  colorMoved = zebra
-[color]
-  ui = auto
+  colorMoved = plain
 [alias]
   aa = add --all
   ap = add --patch
@@ -40,3 +39,17 @@
   st = status
   hidden = !git ls-files -v | grep \"^[[:lower:]]\"
   prune-merged-branches = !git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -d
+[color]
+  ui = auto
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+[color "diff"]
+  meta = yellow bold
+  frag = yellow bold
+  commit = yellow bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
