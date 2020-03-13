@@ -9,3 +9,5 @@ export FZF_DEFAULT_OPTS=' --color=fg:#969896,bg:#1d1f21,hl:#b5bd68 --color=fg+:#
 # For elsa Project
 export CAMUNDA_DIR='/home/taktsoft/Projects/FBB/Downloads/camunda-bpm-tomcat-7.11.0/server/apache-tomcat-9.0.19/bin'
 
+export MANPAGER='nvim +Man!'
+
