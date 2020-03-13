@@ -137,14 +137,19 @@ augroup END
 augroup ale
   autocmd!
 
+  let g:ale_lint_on_text_changed = 0
+  let g:ale_lint_on_insert_leave = 0
+  let g:ale_lint_on_enter = 0
+  let g:ale_lint_on_save = 0
+  let g:ale_lint_on_filetype_change = 0
+
   if g:has_async
     autocmd VimEnter *
       \ set updatetime=1000 |
-      \ let g:ale_lint_on_text_changed = 0
-    autocmd CursorHold * call ale#Queue(0)
-    autocmd CursorHoldI * call ale#Queue(0)
-    autocmd InsertEnter * call ale#Queue(0)
-    autocmd InsertLeave * call ale#Queue(0)
+    " autocmd CursorHold * call ale#Queue(0)
+    " autocmd CursorHoldI * call ale#Queue(0)
+    " autocmd InsertEnter * call ale#Queue(0)
+    " autocmd InsertLeave * call ale#Queue(0)
   else
     echoerr "The thoughtbot dotfiles require NeoVim or Vim 8"
   endif
