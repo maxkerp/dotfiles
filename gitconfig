@@ -22,6 +22,7 @@
 [color]
   ui = auto
 [alias]
+  tbm = log --oneline HEAD..
   aa = add --all
   ap = add --patch
   br = branch
