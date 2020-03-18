@@ -81,3 +81,14 @@ function create_aptfile(){
   > ~/dotfiles/Aptfile.tmp
 
 }
+
+function tspasswords() {
+  TS_PASSWORD_SCRIPT="$HOME/Config/tspassword.sh"
+  if [ -f $TS_PASSWORD_SCRIPT ]; then
+    $TS_PASSWORD_SCRIPT $1
+  else
+    echo 'Can not find snippet' 1>&2
+    return 1
+  fi
+}
+alias tspw=tspasswords
