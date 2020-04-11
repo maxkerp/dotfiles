@@ -95,6 +95,7 @@ Plug 'slim-template/vim-slim'
 Plug 'vim-ruby/vim-ruby'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'amiorin/vim-textile'
+Plug 'mattn/emmet-vim'
 
 " Languages and Frameworks
 Plug 'tpope/vim-bundler'
