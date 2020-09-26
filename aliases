@@ -1,20 +1,46 @@
+# COLORS and other defaults
+alias ls="ls --color --group-directories-first -F"
+alias grep="grep --color"
+alias ip="ip -color"
+
 # Unix
-alias dirs="ls -1d */"
-alias e="$EDITOR"
-alias files="ls -p | grep -v /"
-alias gopen='gnome-open'
-alias l='ls -lF'
-alias la='ls -AF'
-alias ll="ls -al"
-alias ll='ls -alF'
-alias ln="ln -v"
-alias mkdir="mkdir -p"
-alias v="$VISUAL"
-alias vi="nvim"
+fun_dirs(){
+  if [ -z $1 ]; then
+    PLACE='.'
+  else;
+    PLACE=$1
+  fi
+
+  ls -1 $PLACE | grep "\/$" | rev | cut -c 2- | rev
+}
+
+alias dirs=fun_dirs
+
+alias files="ls | grep -v /"
+alias path='echo $PATH | tr -s ":" "\n"'
+
+alias l='ls -1'
+alias la='ls -1 -A'
+alias ll="ls -l -A"
+
+# Be cautious with moving, copying, linking and removing files.
+# Use -i. Also be verbose
+alias ln="ln -iv"
+alias rm="rm -Iv"
+alias cp="cp -iv"
+
+# Be verbose
+alias mkdir="mkdir -vp"
+alias rmdir="rmdir -v"
+
 alias ".."="source ~/.zshrc"
 
-# Pretty print the path
-alias path='echo $PATH | tr -s ":" "\n"'
+
+# Program aliases
+alias v="$VISUAL"
+alias vi="v"
+alias e="$EDITOR"
+alias gopen='gnome-open'
 
 # Git
 alias br='git branch | grep -v '^\*' | fzf --reverse --height=40% | xargs git checkout'
@@ -23,6 +49,10 @@ alias s='git status -s'
 alias staged='git diff --staged'
 alias unstaged='git diff'
 alias u='git add -u'
+
+# Theme
+alias night='sh ~/Share/base16-shell/scripts/base16-tomorrow-night.sh'
+alias day='sh ~/Share/base16-shell/scripts/base16-atelier-forest-light.sh'
 
 # Bundler
 alias b="bundle"
