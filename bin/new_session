@@ -12,7 +12,7 @@ active_sessions(){
   tmux list-sessions | sed -E 's/:.*$//'
 }
 
-path="$(dirs | fzf --height=20% --color=16)"
+path="$(dirs | fzf --color=16)"
 
 tat "$CODE_DIR/$path"
 
