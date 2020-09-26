@@ -1,0 +1,7 @@
+# Show a selectable list of all tmux session
+
+tmux list-sessions \
+  | sed -E 's/:.*$//' \
+  | grep -v "^$(tmux display-message -p '#S')\$" \
+  | fzf  --height=20% --color=16 --reverse \
+  | xargs tmux switch-client -t 2> /dev/null
