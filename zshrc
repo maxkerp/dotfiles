@@ -1,3 +1,9 @@
+# PROFILING=true
+
+if [ "$PROFILING" = "true" ]; then
+  zmodload zsh/zprof
+fi
+
 # load custom executable functions
 for function in ~/.zsh/functions/*; do
   source $function
@@ -46,3 +52,7 @@ eval "$(starship init zsh)"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+if [ "$PROFILING" = "true" ]; then
+  zprof
+fi
