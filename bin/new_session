@@ -1,0 +1,18 @@
+# Show a selectable list of all tmux session
+
+
+CODE_DIR="$HOME/Code"
+
+# Unix
+dirs(){
+  /bin/ls -1F $CODE_DIR | grep "\/$" | rev | cut -c 2- | rev
+}
+
+active_sessions(){
+  tmux list-sessions | sed -E 's/:.*$//'
+}
+
+path="$(dirs | fzf --color=16)"
+
+tat "$CODE_DIR/$path"
+

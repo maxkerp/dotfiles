@@ -21,7 +21,6 @@
 [diff]
   colorMoved = plain
 [alias]
-  tbm = log --oneline HEAD..
   aa = add --all
   ap = add --patch
   br = branch

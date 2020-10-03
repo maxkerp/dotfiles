@@ -71,6 +71,9 @@ nnoremap <leader>s viwy:Ack! <C-R>" spec/<cr>
 vnoremap <leader>a y:Ack! "<C-R>"" app/ lib/ config/<cr>
 vnoremap <leader>s y:Ack! "<C-R>"" spec/<cr>
 
+nnoremap <leader>fb :Ack! 'binding\.pry' ./**/*.rb ./**/*.erb ./**/*.slim<cr>
+
+
 " Search for visually selected text in file
 :vnoremap // y/<C-R>"<cr>
 
@@ -163,7 +166,6 @@ nmap ga <Plug>(EasyAlign)
 "}}}
 
 "{{{ ---------------------- Mappings from Thoughbot
-
 
 " vim-test mappings
 nnoremap <silent> <Leader>t :TestFile<CR>
