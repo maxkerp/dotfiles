@@ -9,7 +9,7 @@ alias ip="ip -color"
 fun_dirs(){
   if [ -z $1 ]; then
     PLACE='.'
-  else;
+  else
     PLACE=$1
   fi
 
@@ -40,18 +40,15 @@ alias v="$VISUAL"
 alias vi="v"
 alias e="$EDITOR"
 alias gopen='gnome-open'
+alias open="xdg-open"
 
 # Git
+alias gs="git fuzzy status"
 alias dh='git diff HEAD'
 alias s='git status -s'
 alias staged='git diff --staged'
 alias unstaged='git diff'
 alias u='git add -u'
-
-#FZF Magic
-alias aptinfo='apt list --installed | fzf | cut -d'/' -f1 | xargs apt show'
-alias br='git branch | grep -v '^\*' | fzf --reverse --height=40% | xargs git checkout'
-alias tldrs='tldr -l | tr -s ", " "\n" | fzf --reverse --preview="tldr {}" --preview-window 70%'
 
 # Theme
 alias night='sh ~/Share/base16-shell/scripts/base16-tomorrow-night.sh'
@@ -86,6 +83,11 @@ alias lint_current_modified_specs='bundle exec rubocop $(current_modified_specs)
 
 alias run_current_modified_specs='bundle exec rspec $(current_modified_specs)'
 alias changed_specs='run_current_modified_specs'
+
+#FZF Magic
+alias aptinfo='apt list --installed | fzf | cut -d'/' -f1 | xargs apt show'
+alias br='git branch | grep -v '^\*' | fzf --reverse --height=40% | xargs git checkout'
+alias tldrs='tldr -l | tr -s ", " "\n" | fzf --reverse --preview="tldr {}" --preview-window 70%'
 
 function aptexplore(){
   apt search $1 2> /dev/null | \
