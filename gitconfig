@@ -8,6 +8,7 @@
   editor = nvim
   excludesfile = ~/.gitexcludes
   pager="diff-so-fancy | less --tabs=4 -RFX"
+  attributesfile = /home/make/.gitattributes
 [push]
   default = current
 [pull]
