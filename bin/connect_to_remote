@@ -1,4 +1,6 @@
 #! /bin/bash
+# Give me a selectable list of all combinations of remote connections for the
+# current rails project
 
 set -eu
 
@@ -7,10 +9,8 @@ available_hosts=$(grep -r "^\s*server [',\"]" config/deploy/ | awk -v FS="(serve
 available_users="deploy root"
 
 available_pairs(){
-  for host in $available_hosts
-  do
-    for user in $available_users
-    do
+  for host in $available_hosts; do
+    for user in $available_users; do
       echo "$user@$host"
     done
   done
