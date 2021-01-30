@@ -68,7 +68,6 @@ set colorcolumn=+1
 " Numbers
 set number
 set numberwidth=5
-set relativenumber
 
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
@@ -98,11 +97,20 @@ let g:html_indent_tags = 'li\|p'
 
 "}}}
 
+
+" Fix code folding in sh files
+" These autocmds need to appear before 'syntax on'
+" Don't know why, but should investigate.
+au FileType sh let g:sh_fold_enabled=7
+au FileType sh let g:is_bash=1
+au FileType sh set foldmethod=syntax
+
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
+
 
 if filereadable(expand("~/.config/nvim/plugs.vim"))
   source ~/.config/nvim/plugs.vim
