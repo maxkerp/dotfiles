@@ -1,0 +1,16 @@
+#! /bin/bash
+# Register the current directory as a workspace
+
+set -e
+
+CURRENT_DIR="$(pwd)"
+
+WORKSPACE_DIR="$HOME/Workspaces"
+
+DEFAULT_WORKSPACE_NAME="$(basename "$CURRENT_DIR")"
+
+WORKSPACE_NAME=${1:-$DEFAULT_WORKSPACE_NAME}
+
+ln -s $CURRENT_DIR $WORKSPACE_DIR/$WORKSPACE_NAME
+
+cp $HOME/.workspace.tmux $CURRENT_DIR

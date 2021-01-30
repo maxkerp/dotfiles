@@ -1,0 +1,37 @@
+#! /bin/bash
+# Create a new window for every line in Procfile and run the command in the new
+# window. If there is no command after the colon, just create the window.
+
+set -euo pipefail
+
+proclines () {
+  grep -v "^ *#" "$1"
+}
+
+
+
+create_windows_and_run_cmds_for () {
+  proclines "$1" | while read line; do
+
+    window_name="$(echo $line | sed 's/:.*//')"
+    window_cmd="$(echo $line | sed 's/.*://')"
+
+    if [ -z "$window_name" ]; then
+      return
+    fi
+
+    if [ -z "$window_cmd" ]; then
+      tmux new-window -dk -n $window_name
+    else
+      tmux new-window -dk -n $window_name
+      tmux send -t ":$window_name" "$window_cmd" C-m
+    fi
+  done
+}
+
+PROCFILE=${1:-Procfile}
+
+if [[ -f "$PROCFILE" ]]; then
+  create_windows_and_run_cmds_for "$PROCFILE"
+fi
+
