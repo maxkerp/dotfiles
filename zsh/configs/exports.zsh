@@ -15,3 +15,5 @@ export MANPAGER='nvim +Man!'
 export GIT_FUZZY_BRANCH_WORKING_COPY_KEY="Ctrl-T"
 export GIT_FUZZY_LOG_WORKING_COPY_KEY="Ctrl-T"
 export GIT_FUZZY_REFLOG_WORKING_COPY_KEY="Ctrl-T"
+
+export BAT_THEME="base16"

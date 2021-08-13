@@ -66,6 +66,10 @@ alias migrate="rake db:migrate db:rollback && rake db:migrate db:test:prepare"
 alias f='rspec --only-failures'
 alias n='rspec --next'
 
+alias rr='DISABLE_PRY=true rspec'
+alias ff='DISABLE_PRY=true rspec --only-failures'
+alias nn='DISABLE_PRY=true rspec --next'
+
 # Modified ruby files compared to MASTER (all modified files)
 alias modified_app_files='git diff --diff-filter=AM --name-status master..HEAD | grep .rb | cut -c 3- | paste -sd " "'
 

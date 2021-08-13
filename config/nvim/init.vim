@@ -97,6 +97,10 @@ let g:html_indent_tags = 'li\|p'
 
 "}}}
 
+" ruby integration
+let g:ruby_host_prog = 'rvm 2.6.3 do neovim-ruby-host'
+let g:fzf_layout = { 'down': '~50%' }
+let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 " Fix code folding in sh files
 " These autocmds need to appear before 'syntax on'
@@ -196,6 +200,18 @@ function! InsertTabWrapper()
 endfunction
 inoremap <Tab> <C-r>=InsertTabWrapper()<CR>
 inoremap <S-Tab> <C-n>
+
+" https://dev.to/vinneycavallo/easily-center-content-in-vim?utm_source=pocket_mylist
+" centers the current pane as the middle 2 of 4 imaginary columns
+" should be called in a window with a single pane
+function CenterPane()
+  lefta vnew
+  wincmd w
+  exec 'vertical resize '. string(&columns * 0.75)
+endfunction
+
+" optionally map it to a key:
+" nnoremap <leader>c :call CenterPane()<cr>
 
 " Extra mappings file
 if filereadable($HOME . "/.config/nvim/mappings.vim")

@@ -71,7 +71,7 @@ nnoremap <leader>s viwy:Ack! <C-R>" spec/<cr>
 vnoremap <leader>a y:Ack! "<C-R>"" app/ lib/ config/<cr>
 vnoremap <leader>s y:Ack! "<C-R>"" spec/<cr>
 
-nnoremap <leader>fb :Ack! 'binding\.pry' ./**/*.rb ./**/*.erb ./**/*.slim<cr>
+nnoremap <leader>fb :Ack! 'binding\.pry' **/*.{rb,erb} <cr>
 
 
 " Search for visually selected text in file
@@ -125,13 +125,17 @@ nnoremap <leader>ll :lne<cr>
 
 "{{{ ---------------------- Working with Text
 
+" Copy/Paste
 vnoremap <leader>y "+y
 nnoremap <leader>p "+gp
 nnoremap <leader>P "+gP
 
-" Visual Mode
-" vnoremap > >gv
-" vnoremap < <gv
+" Moving
+vnoremap > >gv
+vnoremap < <gv
+
+" Joining
+nnoremap <C-u> Jx
 
 " Whitespace
 nnoremap <leader>sw :StripWhitespace<CR>
@@ -178,10 +182,11 @@ nnoremap <silent> <Leader>gt :TestVisit<CR>
 nnoremap <Leader>r :RunInInteractiveShell<Space>
 
 " Quicker window movement
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
+" Disabled since we are using TmuxNavigation
+" nnoremap <C-j> <C-w>j
+" nnoremap <C-k> <C-w>k
+" nnoremap <C-h> <C-w>h
+" nnoremap <C-l> <C-w>l
 
 " Move between linting errors
 nnoremap ]r :ALENextWrap<CR>
@@ -275,8 +280,8 @@ let g:dispatch_compilers['bundle exec rspec'] = 'rspec'
 let test#strategy = "neomake"
 
 " GOYO Settings
-let g:goyo_width = 160
-let g:goyo_height = '95%'
+let g:goyo_width = '50%'
+let g:goyo_height = '100%'
 " "let g:goyo_linenr = 1
 
 " Rubocop

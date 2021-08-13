@@ -23,14 +23,14 @@ fi
 if [ -d "$HOME/.nvm" ]; then
   export NVM_DIR="$HOME/.nvm"
 
+  if [ -s "$NVM_DIR/nvm.sh" ]; then
+    source "$NVM_DIR/nvm.sh"
+  fi
+
   # This loads nvm and its bash completion. Both of them add an incredible
   # amount of startup time to zsh, around 500ms so only do this if you can find
   # a package.json in the CWD
   if [ -f "./package.json" ]; then
-
-    if [ -s "$NVM_DIR/nvm.sh" ]; then
-      source "$NVM_DIR/nvm.sh"
-    fi
 
     if [ -s "$NVM_DIR/bash_completion" ]; then
       source "$NVM_DIR/bash_completion"
