@@ -97,6 +97,9 @@ let g:html_indent_tags = 'li\|p'
 
 "}}}
 
+" https://github.com/wincent/corpus#user-content-corpusdirectories
+let g:CorpusDirectories = {'~/Documents/Corpus': {'autocommit': 1, 'autoreference': 1, 'autotitle': 1, 'base': './', 'transform': 'local'}}
+
 " ruby integration
 let g:ruby_host_prog = 'rvm 2.6.3 do neovim-ruby-host'
 let g:fzf_layout = { 'down': '~50%' }

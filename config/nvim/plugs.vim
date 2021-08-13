@@ -30,6 +30,9 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-rhubarb'
 
+" Uncategorized
+" --------------
+Plug 'wincent/corpus'
 
 " Git
 " ----
