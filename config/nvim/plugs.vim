@@ -9,7 +9,6 @@ function! s:UnPlug(plug_name)
   endif
 endfunction
 command!  -nargs=1 UnPlug call s:UnPlug(<args>)
-
 let g:has_async = v:version >= 800 || has('nvim')
 
 call plug#begin('~/.config/nvim/bundle')
