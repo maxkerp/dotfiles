@@ -50,6 +50,7 @@ nnoremap <silent> <leader>cf :let @+=expand("%")<CR>
 
 " Toggle folds with space
 nnoremap <Space> za
+nnoremap <C-Space> zc
 vnoremap <Space> za
 
 "}}}
@@ -277,7 +278,7 @@ let g:airline_theme='base16_tomorrow'
 
 let g:dispatch_compilers = {}
 let g:dispatch_compilers['bundle exec rspec'] = 'rspec'
-let test#strategy = "neomake"
+let test#strategy = "dispatch"
 
 " GOYO Settings
 let g:goyo_width = '50%'

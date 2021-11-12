@@ -16,11 +16,8 @@ call plug#begin('~/.config/nvim/bundle')
 " Define bundles via Github repos
 Plug 'christoomey/vim-run-interactive'
 
-if executable('fzf')
-  Plug '~/.fzf'
-else
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-endif
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " Uncategorized
 " --------------
@@ -71,9 +68,16 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'edkolev/tmuxline.vim'
 Plug 'vim-airline/vim-airline'
-Plug 'janko-m/vim-test'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dhruvasagar/vim-zoom'
+
+" Productivity
+" --------------------
+"  Running from within vim
+"
+Plug 'tpope/vim-dispatch'
+Plug 'vim-test/vim-test'
+Plug 'neomake/neomake'
 
 " Themes
 " -------
@@ -117,9 +121,7 @@ Plug 'tpope/vim-rake'
 " Plug 'garbas/vim-snipmate'
 " Plug 'honza/vim-snippets'
 " Plug 'mtth/scratch.vim'
-" Plug 'neomake/neomake', { 'on':  'TestFile' }
 " Plug 'tomtom/tlib_vim'
-" Plug 'tpope/vim-dispatch'
 " Plug 'vimwiki/vimwiki'
 " Plug 'w0rp/ale'
 
