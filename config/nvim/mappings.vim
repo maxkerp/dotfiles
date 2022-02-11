@@ -78,6 +78,8 @@ nnoremap <leader>fb :Ack! 'binding\.pry' **/*.{rb,erb} <cr>
 " Search for visually selected text in file
 :vnoremap // y/<C-R>"<cr>
 
+" Search for text in files with fzf
+nnoremap <c-\> :Rg<cr>
 
 "}}}
 
@@ -158,7 +160,7 @@ map <C-n> :NERDTreeToggle<CR>
 
 nnoremap <F3> :Tagbar<cr>
 
-nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>gb :Git credit<cr>
 
 " Start ArgWrap
 nnoremap <silent> <leader>w :ArgWrap<CR>

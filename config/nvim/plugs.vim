@@ -37,6 +37,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'jreybert/vimagit'
 Plug 'gregsexton/gitv'
+Plug 'junkblocker/git-time-lapse'
+Plug 'rhysd/git-messenger.vim'
 
 " Formatting and working with text
 " ---------------------------------
