@@ -1,0 +1,22 @@
+#! /bin/bash
+# Give me a selectable list of all combinations of remote connections for the
+# current rails project
+
+set -eu
+
+available_hosts=$(grep -r "^\s*server [',\"]" config/deploy/ | awk -v FS="(server (\"|')|(',|\",) user:)" '{print $2}')
+
+available_users="deploy root"
+
+available_pairs(){
+  for host in $available_hosts; do
+    for user in $available_users; do
+      echo "$user@$host"
+    done
+  done
+}
+
+selected_pair="$(available_pairs | sort | fzf --color=16 --reverse)"
+
+tmux new-window -n $selected_pair ssh $selected_pair
+

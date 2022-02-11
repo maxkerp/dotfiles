@@ -1,3 +1,5 @@
+alias ".."="source ~/.zshrc"
+
 # COLORS and other defaults
 alias ls="ls --color --group-directories-first -F"
 alias grep="grep --color"
@@ -7,7 +9,7 @@ alias ip="ip -color"
 fun_dirs(){
   if [ -z $1 ]; then
     PLACE='.'
-  else;
+  else
     PLACE=$1
   fi
 
@@ -24,7 +26,7 @@ alias la='ls -1 -A'
 alias ll="ls -l -A"
 
 # Be cautious with moving, copying, linking and removing files.
-# Use -i. Also be verbose
+# Also be verbose
 alias ln="ln -iv"
 alias rm="rm -Iv"
 alias cp="cp -iv"
@@ -33,17 +35,15 @@ alias cp="cp -iv"
 alias mkdir="mkdir -vp"
 alias rmdir="rmdir -v"
 
-alias ".."="source ~/.zshrc"
-
-
 # Program aliases
 alias v="$VISUAL"
 alias vi="v"
 alias e="$EDITOR"
 alias gopen='gnome-open'
+alias open="xdg-open"
 
 # Git
-alias br='git branch | grep -v '^\*' | fzf --reverse --height=40% | xargs git checkout'
+alias gs="git fuzzy status"
 alias dh='git diff HEAD'
 alias s='git status -s'
 alias staged='git diff --staged'
@@ -53,6 +53,7 @@ alias u='git add -u'
 # Theme
 alias night='sh ~/Share/base16-shell/scripts/base16-tomorrow-night.sh'
 alias day='sh ~/Share/base16-shell/scripts/base16-atelier-forest-light.sh'
+
 
 # Bundler
 alias b="bundle"
@@ -65,20 +66,64 @@ alias migrate="rake db:migrate db:rollback && rake db:migrate db:test:prepare"
 alias f='rspec --only-failures'
 alias n='rspec --next'
 
-# Modified ruby files compared to MASTER (all modified files)
-alias modified_app_files='git diff --diff-filter=AM --name-status master..HEAD | grep .rb | cut -c 3- | paste -sd " "'
+alias rr='DISABLE_PRY=true rspec'
+alias ff='DISABLE_PRY=true rspec --only-failures'
+alias nn='DISABLE_PRY=true rspec --next'
 
-# Modified spec files compared to MASTER (all modified specs)
-alias modified_spec_files='git diff --diff-filter=AM --name-status master..HEAD | grep _spec.rb | cut -c 3- | paste -sd " "'
-#
-# Modified ruby files on CURRENT BRANCH (current modified files)
-alias current_modified_files='git diff --diff-filter=AM --name-status HEAD | grep .rb | cut -c 3- | paste -sd " "'
+alias rdc='run_specs_diffrent_in_this_commit'
+alias rdb='run_specs_diffrent_on_this_branch'
 
-# Modified spec files on CURRENT BRANCH (current modified specs)
-alias current_modified_specs='git diff --diff-filter=AM --name-status HEAD | grep _spec.rb | cut -c 3- | paste -sd " "'
+alias files_different_on_this_branch='git diff --diff-filter=AM --name-status master..HEAD | grep .rb | cut -c 3- | paste -sd " "'
+alias files_different_in_this_commit='git diff --diff-filter=AM --name-status HEAD | grep .rb | cut -c 3- | paste -sd " "'
 
-alias lint_current_modified_files='bundle exec rubocop $(current_modified_files)'
-alias lint_current_modified_specs='bundle exec rubocop $(current_modified_specs)'
 
-alias run_current_modified_specs='bundle exec rspec $(current_modified_specs)'
-alias changed_specs='run_current_modified_specs'
+alias spec_files_different_on_this_branch='git diff --diff-filter=AM --name-status master..HEAD | grep _spec.rb | cut -c 3- | paste -sd " "'
+alias spec_files_different_in_this_commit='git diff --diff-filter=AM --name-status HEAD | grep _spec.rb | cut -c 3- | paste -sd " "'
+
+alias run_specs_diffrent_in_this_commit='bundle exec rspec $(spec_files_different_in_this_commit)'
+alias run_specs_diffrent_on_this_branch='bundle exec rspec $(spec_files_different_on_this_branch)'
+
+
+alias lint_files_different_in_this_commit='bundle exec rubocop $(files_different_in_this_commit)'
+alias lint_spec_files_different_in_this_commit='bundle exec rubocop $(spec_files_different_in_this_commit)'
+
+#FZF Magic
+alias aptinfo='apt list --installed | fzf | cut -d'/' -f1 | xargs apt show'
+alias br='git branch | grep -v '^\*' | fzf --reverse --height=40% | xargs git checkout'
+alias tldrs='tldr -l | tr -s ", " "\n" | fzf --reverse --preview="tldr {}" --preview-window 70%'
+
+function aptexplore(){
+  apt search $1 2> /dev/null | \
+  grep -v -e "^ " | \
+  grep -v -e "^$" | \
+  cut -d"/" -f1 | \
+  fzf --reverse --preview="apt show 2> /dev/null {}" --preview-window=60%
+}
+
+function manexplore(){
+  apropos $1 | fzf --reverse +s | cut -d' ' -f1 | xargs man
+}
+
+function create_aptfile(){
+  grep "^sudo.*apt.* install" ~/.zhistory \
+  | sed -E "s/.*sudo apt.* install//" \
+  | sed -E "s/--.* //" \
+  | tr " " "\n" \
+  | grep -v -e "^$" \
+  | sort \
+  | uniq \
+  | comm -13 ~/dotfiles/Aptfile - \
+  > ~/dotfiles/Aptfile.tmp
+
+}
+
+function tspasswords() {
+  TS_PASSWORD_SCRIPT="$HOME/Config/tspassword.sh"
+  if [ -f $TS_PASSWORD_SCRIPT ]; then
+    $TS_PASSWORD_SCRIPT $1
+  else
+    echo 'Can not find snippet' 1>&2
+    return 1
+  fi
+}
+alias tspw=tspasswords

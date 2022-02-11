@@ -8,3 +8,4 @@ tags
 .rspec
 .rspec.output
 .deprecations
+.workspace.tmux

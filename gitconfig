@@ -5,9 +5,10 @@
   templatedir = ~/.git_template
 [core]
   autocrlf = input
-  editor = nvim
+  editor = ~/Downloads/packages/nvim.appimage
   excludesfile = ~/.gitexcludes
   pager="diff-so-fancy | less --tabs=4 -RFX"
+  attributesfile = /home/make/.gitattributes
 [push]
   default = current
 [pull]
@@ -20,12 +21,16 @@
   template = ~/.gitmessage
 [diff]
   colorMoved = plain
+[diff "enc"]
+  textconv = "rails encrypted:show"
+  cachetextconv = false
 [alias]
   aa = add --all
   ap = add --patch
   br = branch
   branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
   ci = commit -v
+  credit = blame
   co = checkout
   dh = diff HEAD
   fe = fetch

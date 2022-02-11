@@ -9,7 +9,6 @@ function! s:UnPlug(plug_name)
   endif
 endfunction
 command!  -nargs=1 UnPlug call s:UnPlug(<args>)
-
 let g:has_async = v:version >= 800 || has('nvim')
 
 call plug#begin('~/.config/nvim/bundle')
@@ -17,11 +16,8 @@ call plug#begin('~/.config/nvim/bundle')
 " Define bundles via Github repos
 Plug 'christoomey/vim-run-interactive'
 
-if executable('fzf')
-  Plug '~/.fzf'
-else
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-endif
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " Uncategorized
 " --------------
@@ -30,6 +26,9 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-rhubarb'
 
+" Uncategorized
+" --------------
+Plug 'wincent/corpus'
 
 " Git
 " ----
@@ -38,6 +37,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'jreybert/vimagit'
 Plug 'gregsexton/gitv'
+Plug 'junkblocker/git-time-lapse'
+Plug 'rhysd/git-messenger.vim'
 
 " Formatting and working with text
 " ---------------------------------
@@ -69,8 +70,16 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'edkolev/tmuxline.vim'
 Plug 'vim-airline/vim-airline'
-Plug 'janko-m/vim-test'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'dhruvasagar/vim-zoom'
+
+" Productivity
+" --------------------
+"  Running from within vim
+"
+Plug 'tpope/vim-dispatch'
+Plug 'vim-test/vim-test'
+Plug 'neomake/neomake'
 
 " Themes
 " -------
@@ -95,6 +104,7 @@ Plug 'slim-template/vim-slim'
 Plug 'vim-ruby/vim-ruby'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'amiorin/vim-textile'
+Plug 'mattn/emmet-vim'
 
 " Languages and Frameworks
 Plug 'tpope/vim-bundler'
@@ -113,9 +123,7 @@ Plug 'tpope/vim-rake'
 " Plug 'garbas/vim-snipmate'
 " Plug 'honza/vim-snippets'
 " Plug 'mtth/scratch.vim'
-" Plug 'neomake/neomake', { 'on':  'TestFile' }
 " Plug 'tomtom/tlib_vim'
-" Plug 'tpope/vim-dispatch'
 " Plug 'vimwiki/vimwiki'
 " Plug 'w0rp/ale'
 

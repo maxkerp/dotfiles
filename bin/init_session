@@ -1,0 +1,27 @@
+#! /bin/bash
+# Initialize the workspace with windows and commands found in .workspace.tmux
+
+# set -eu
+
+init(){
+  index=1
+  while read line <&3; do
+    IFS=':' read -r -a window_command_split <<<"$line"
+
+    window_name="${window_command_split[0]}"
+    window_command="${window_command_split[1]}"
+
+    if [[ $window_command = " -" ]]; then
+      tmux new-window -kd -n $window_name -t $index
+    else
+      tmux new-window -kd -n $window_name -t $index $window_command
+    fi
+
+    ((index++))
+  done 3< .workspace.tmux
+}
+
+if [[ -f ".workspace.tmux" ]]; then
+  init
+fi
+

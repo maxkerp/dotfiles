@@ -1,18 +1,20 @@
-# Show a selectable list of all tmux session
+#! /bin/bash
+# Show a selectable list of all project folders
 
-
-CODE_DIR="$HOME/Code"
+WORKSPACE_DIR="$HOME/Workspaces/"
 
 # Unix
-dirs(){
-  /bin/ls -1F $CODE_DIR | grep "\/$" | rev | cut -c 2- | rev
+projects(){
+  /bin/ls -1 $WORKSPACE_DIR
 }
 
 active_sessions(){
   tmux list-sessions | sed -E 's/:.*$//'
 }
 
-path="$(dirs | fzf --color=16)"
+selected_project="$(projects | fzf --color=16)"
 
-tat "$CODE_DIR/$path"
+real_path=$(readlink "$WORKSPACE_DIR/$selected_project")
+
+tat $real_path
 

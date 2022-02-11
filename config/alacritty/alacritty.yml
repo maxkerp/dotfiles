@@ -64,7 +64,7 @@ colors:
 #    - --login
 
 mouse:
-  url:
+  hints:
     launcher:
       program: xdg-open
 
@@ -82,8 +82,7 @@ key_bindings:
   - { key: Insert,   mods: Shift,         action: PasteSelection   }
   - { key: Key0,     mods: Control,       action: ResetFontSize    }
   - { key: Equals,   mods: Control,       action: IncreaseFontSize }
-  - { key: Add,      mods: Control,       action: IncreaseFontSize }
-  - { key: Subtract, mods: Control,       action: DecreaseFontSize }
+  - { key: Plus,     mods: Control,       action: IncreaseFontSize }
   - { key: Minus,    mods: Control,       action: DecreaseFontSize }
   - { key: F11,                           action: ToggleFullscreen }
 
