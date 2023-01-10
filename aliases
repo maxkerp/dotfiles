@@ -127,3 +127,7 @@ function tspasswords() {
   fi
 }
 alias tspw=tspasswords
+
+alias ticket-numbers='git log --oneline production..staging | grep -Eo "\s#[0-9]+" | sort | uniq'
+alias tickets='git log --oneline production..staging'
+alias k9s="docker run --rm -it -v ~/.kube/config:/root/.kube/config quay.io/derailed/k9s"

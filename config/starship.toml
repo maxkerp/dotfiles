@@ -3,9 +3,9 @@
 
 # Replace the "❯" symbol in the prompt with "➜"
 [character]
-symbol = "➜"
+# symbol = "➜"
 error_symbol = "✗"
-use_symbol_for_status = true
+# use_symbol_for_status = true
 
 [[battery.display]]
 threshold = 30
@@ -13,4 +13,10 @@ style = "bold red"
 
 [time]
 disabled = false
+
+[kubernetes]
+#format = 'on [⛵ ($user on )($cluster in )$context \($namespace\)](blue) '
+format = 'on [⛵ $context \($namespace\)](blue) '
+disabled = false
+detect_files = ['k8s']
 

@@ -76,7 +76,7 @@ nnoremap <leader>fb :Ack! 'binding\.pry' **/*.{rb,erb} <cr>
 
 
 " Search for visually selected text in file
-:vnoremap // y/<C-R>"<cr>
+vnoremap // y/<C-R>"<cr>
 
 " Search for text in files with fzf
 nnoremap <c-\> :Rg<cr>
@@ -98,6 +98,8 @@ nnoremap <Left> <c-w><
 nnoremap <Right> <c-w>>
 nnoremap <Up> <c-w>+
 nnoremap <Down> <c-w>-
+
+nnoremap <C-w>v :vnew<cr>
 
 "}}}
 
@@ -212,6 +214,19 @@ nnoremap <c-p> :Files<cr>
 
 "}}}
 
+"{{{ ---------------------- Snippets Mapping
+"
+" press <Tab> to expand or jump in a snippet. These can also be mapped separately
+" via <Plug>luasnip-expand-snippet and <Plug>luasnip-jump-next.
+imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
+
+" -1 for jumping backwards.
+inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
+
+snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>
+snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>
+"}}}
+"
 "{{{ ---------------------- Template
 
 "}}}

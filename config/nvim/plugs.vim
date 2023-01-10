@@ -111,6 +111,13 @@ Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 
+" Snippet Support
+" Plug 'MarcWeber/vim-addon-mw-utils'
+" Plug 'garbas/vim-snipmate'
+" Plug 'tomtom/tlib_vim'
+Plug 'honza/vim-snippets'
+Plug 'L3MON4D3/LuaSnip', {'tag': 'v1.*'}
+
 " This might be too much bloat...
 " Plug 'sheerun/vim-polyglot'
 
@@ -118,12 +125,8 @@ Plug 'tpope/vim-rake'
 " --------------------------------
 
 " Plug 'tpope/vim-commentary'
-" Plug 'MarcWeber/vim-addon-mw-utils'
 " Plug 'christoomey/vim-rfactory'
-" Plug 'garbas/vim-snipmate'
-" Plug 'honza/vim-snippets'
 " Plug 'mtth/scratch.vim'
-" Plug 'tomtom/tlib_vim'
 " Plug 'vimwiki/vimwiki'
 " Plug 'w0rp/ale'
 

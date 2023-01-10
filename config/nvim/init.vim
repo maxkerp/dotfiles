@@ -216,6 +216,8 @@ endfunction
 " optionally map it to a key:
 " nnoremap <leader>c :call CenterPane()<cr>
 
+lua require("luasnip.loaders.from_snipmate").lazy_load()
+
 " Extra mappings file
 if filereadable($HOME . "/.config/nvim/mappings.vim")
   source ~/.config/nvim/mappings.vim
