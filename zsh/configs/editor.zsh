@@ -1,2 +1,2 @@
-export VISUAL=$HOME/Downloads/packages/nvim.appimage
+export VISUAL=$HOME/Downloads/Apps/nvim.appimage
 export EDITOR=$VISUAL

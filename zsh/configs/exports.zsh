@@ -10,7 +10,7 @@ export FZF_DEFAULT_OPTS=' --color=fg:#969896,bg:#1d1f21,hl:#b5bd68 --color=fg+:#
 export CAMUNDA_DIR='/home/make/Projects/FBB/camunda-bpm-tomcat-7.14.0/server/apache-tomcat-9.0.36/bin'
 
 # Use nvim for manpages
-export MANPAGER='nvim +Man!'
+export MANPAGER='/usr/bin/nvim +Man!'
 
 export GIT_FUZZY_BRANCH_WORKING_COPY_KEY="Ctrl-T"
 export GIT_FUZZY_LOG_WORKING_COPY_KEY="Ctrl-T"

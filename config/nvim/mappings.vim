@@ -50,7 +50,8 @@ nnoremap <silent> <leader>cf :let @+=expand("%")<CR>
 
 " Toggle folds with space
 nnoremap <Space> za
-nnoremap <C-Space> zc
+" TODO: I'd rather make <C-Space> work again.
+nnoremap <M-C-Space> zc
 vnoremap <Space> za
 
 "}}}
