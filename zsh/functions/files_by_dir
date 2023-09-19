@@ -1,0 +1,9 @@
+files_by_dir() {
+  # TODO: find count of files in ./ and the sum including subdirs for ./
+  # Make it recursive if possible.
+  # This let's us inspect project structure more easily.
+  for i in */ .*/ ; do
+    echo -n "$i: " ;
+    (find "$i" -type f 2> /dev/null | wc -l) ;
+  done
+}

@@ -175,18 +175,14 @@ augroup END
 let g:is_posix = 1
 
 
-" Use The Silver Searcher
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
+" Use ripgrep
+if executable('rg')
+  " Use Rg over Grep
+  "set grepprg=rg\ --nogroup\ --nocolor
+  "set grepprg=rg\ --files\ --follow\ --no-ignore-vcs\ --hidden\ -g\ "!{node_modules/*,.git/*}"
 
-  " Use ag in fzf for listing files. Lightning fast and respects .gitignore
-  let $FZF_DEFAULT_COMMAND = 'ag --literal --files-with-matches --nocolor --hidden -g ""'
-
-  if !exists(":Ag")
-    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-    nnoremap \ :Ag<SPACE>
-  endif
+  " command! -nargs=* -bang RG call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case --no-ignore-vcs --hidden -g "!{node_modules/*,.git/*,tmp/*}" -- '.shellescape(<q-args>), 1, fzf#vim#with_preview(), <bang>0)
+  " nnoremap <C-\> :RG<cr>
 endif
 
 " Tab completion

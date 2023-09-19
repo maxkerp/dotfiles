@@ -27,3 +27,5 @@ MSG
 fi
 
 unset _old_path
+
+if [ -e /home/make/.nix-profile/etc/profile.d/nix.sh ]; then . /home/make/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

@@ -1,0 +1,24 @@
+
+/* This file is needed to increase the font size in Thunderbird for anyone but an
+ * eagle.  This file needs to reside in folder named `/chrome` within the account
+ * folder and needs to be named `userChrome.css`.
+ * Under linux this is e.g.
+ * `~/.thunderbird/z4oxsz8k.default/chrome/userChrome.css`
+ */
+
+/*
+ * Do not remove the @namespace line -- it's required for correct functioning
+ */
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* set default namespace to XUL */
+
+/* #dirTree > treechildren {font-size: 12px; font-family: Arial;} */
+/* #abResultsTree > treechildren {font-size: 12px; font-family: Arial;} */
+
+/* #folderTree > treechildren {font-size: 15px; font-family: Arial;} */
+
+
+window {
+  font: 5mm tahoma,arial,helvetica,sans-serif !important;
+}
+
+#threadTree > treechildren {font-size: 23px; font-family: Arial;}

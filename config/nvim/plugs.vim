@@ -54,6 +54,7 @@ Plug 'vim-scripts/tComment'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'kana/vim-textobj-user'
 Plug 'rhysd/vim-textobj-ruby'
+Plug 'vim-scripts/vis'
 
 " Finding stuff
 " --------------
@@ -105,6 +106,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'amiorin/vim-textile'
 Plug 'mattn/emmet-vim'
+Plug 'mechatroner/rainbow_csv'
 
 " Languages and Frameworks
 Plug 'tpope/vim-bundler'
