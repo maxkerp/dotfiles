@@ -2,14 +2,6 @@
 PATH="$HOME/.bin:/usr/local/sbin:$PATH"
 
 PATH="$HOME/.bin/git-fuzzy/bin/:$PATH"
-# Try loading ASDF from the regular home dir location
-if [ -f "$HOME/.asdf/asdf.sh" ]; then
-  . "$HOME/.asdf/asdf.sh"
-elif which brew >/dev/null &&
-  BREW_DIR="$(dirname "$(which brew)")/.." &&
-  [ -f "$BREW_DIR/opt/asdf/asdf.sh" ]; then
-  . "$BREW_DIR/opt/asdf/asdf.sh"
-fi
 
 # mkdir .git/safe in the root of repositories you trust
 PATH=".git/safe/../../bin:$PATH"
@@ -35,9 +27,7 @@ if [ -d "$HOME/.nvm" ]; then
     if [ -s "$NVM_DIR/bash_completion" ]; then
       source "$NVM_DIR/bash_completion"
     fi
-
   fi
-
 fi
 
 # Load z

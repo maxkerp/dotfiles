@@ -3,5 +3,5 @@
 tmux list-sessions \
   | sed -E 's/:.*$//' \
   | grep -v "^$(tmux display-message -p '#S')\$" \
-  | fzf  --height=20% --color=16 --reverse \
+  | fzf --height=20% --color=$(CTP_THEME=frappe fzf_default_color_opts) --reverse \
   | xargs tmux switch-client -t 2> /dev/null

@@ -1,0 +1,56 @@
+#! /bin/bash
+# Example for FRAPE according to https://github.com/catppuccin/fzf/blob/main/README.md
+# See following link for more fzf customization
+# https://thevaluable.dev/practical-guide-fzf-example/#colors-but-for-what
+#
+# current_background=:surface0
+# current_highlight:red
+# current_text:text
+#
+# background:base
+# border:NONE
+# disabled:NONE
+# gutter:NONE
+# header:red
+# highlight:red
+# info:mauve
+# label:NONE
+# marker:rosewater
+# pointer:rosewater
+# preview_background:NONE
+# preview_foreground:NONE
+# prompt:mauve
+# query:NONE
+# separator:NONE
+# spinner:rosewater
+# text:text
+
+set -eu
+
+background="bg:$(ctp_color "base")"
+current_background="bg+:$(ctp_color "surface0")"
+
+border="border:$(ctp_color "crust")"
+disabled="disabled:$(ctp_color "crust")"
+gutter="gutter:$(ctp_color "base")"
+header="header:$(ctp_color "red")"
+
+highlight="hl:$(ctp_color "green")"
+current_highlight="hl+:$(ctp_color "yellow")"
+
+info="info:$(ctp_color "mauve")"
+label="label:$(ctp_color "crust")"
+marker="marker:$(ctp_color "rosewater")"
+pointer="pointer:$(ctp_color "yellow")"
+preview_background="preview-bg:$(ctp_color "crust")"
+preview_foreground="preview-fg:$(ctp_color "crust")"
+prompt="prompt:$(ctp_color "mauve")"
+query="query:$(ctp_color "text")"
+separator="separator:$(ctp_color "crust")"
+spinner="spinner:$(ctp_color "rosewater")"
+
+text="fg:$(ctp_color "text")"
+current_text="fg+:$(ctp_color "text")"
+
+echo "$current_text,$current_background,$current_highlight,$text,$background,$preview_foreground,$preview_background,$highlight,$gutter,$query,$disabled,$info,$separator,$border,$label,$prompt,$pointer,$marker,$spinner,$header"
+

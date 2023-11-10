@@ -16,7 +16,7 @@ available_pairs(){
   done
 }
 
-selected_pair="$(available_pairs | sort | fzf --color=16 --reverse)"
+selected_pair="$(available_pairs | sort | fzf --color=$(CTP_THEME=frappe fzf_default_color_opts) --reverse)"
 
 tmux new-window -n $selected_pair ssh $selected_pair
 

@@ -12,7 +12,7 @@ active_sessions(){
   tmux list-sessions | sed -E 's/:.*$//'
 }
 
-selected_project="$(projects | fzf --color=16)"
+selected_project="$(projects | fzf --color=$(CTP_THEME=frappe fzf_default_color_opts))"
 
 real_path=$(readlink "$WORKSPACE_DIR/$selected_project")
 
