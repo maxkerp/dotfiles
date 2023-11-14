@@ -1,5 +1,4 @@
 Vim: -
-Specs: -
 Console: -
 Term: -
 Git: -
