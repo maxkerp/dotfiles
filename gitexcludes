@@ -9,3 +9,4 @@ tags
 .rspec.output
 .deprecations
 .workspace.tmux
+.node-version

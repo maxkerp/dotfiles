@@ -1,18 +1,23 @@
 # load our own completion functions
 fpath=(~/.zsh/completion /usr/local/share/zsh/site-functions $fpath)
 
+# Not sure if this is actually working for me...
+# export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+# source ~/.local/opt/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# FIXME This is adding about 300ms to the startup time so lets not do this for
-# now and try to fix it
+source <(fx --comp zsh)
 
-# completion; use cache if updated within 24h
-# autoload -Uz compinit
-# if [[ -n $HOME/.zcompdump ]]; then
-#   compinit -d $HOME/.zcompdump;
-# else
-#   compinit -C;
-# fi;
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+source <(carapace _carapace)
 
-# disable zsh bundled function mtools command mcd
-# which causes a conflict.
-compdef -d mcd
+zmodload zsh/complist
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+zstyle ':completion:*' menu yes select
+
+# The normal hjkl keys are bound by tmux to move between panes.
+# Those won't work for me. I'm not sure if I should try uiop or just stay with np and fb
+# Another Ideas would be to try e/y just like with scrolling previews in bat/fzf
+# bindkey -M menuselect '^u' backward-char
+# bindkey -M menuselect '^i' down-line-or-history
+# bindkey -M menuselect '^o' up-line-or-history
+# bindkey -M menuselect '^p' forward-char

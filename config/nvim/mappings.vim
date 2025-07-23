@@ -3,23 +3,6 @@
 au BufEnter *.rb syn match error contained "\<binding.pry\>"
 au BufEnter *.rb syn match error contained "\<TODO\>"
 
-" autocmd VimEnter * AirlineTheme term
-" autocmd VimEnter * AirlineTheme base16_shell
-au VimEnter * highlight MatchParen guifg=#cc6666 guibg=#f0c674
-
-au FileType vim set foldmethod=marker foldlevel=0
-au FileType ruby EnableStripWhitespaceOnSave
-
-augroup MagitCustom
-  autocmd!
-
-  au FileType magit set scrolloff=100
-  " TODO figure out how to unmap a plugin mapping
-  " au FileType magit nunmap L
-  " au FileType magit nnoremap <silent> L :tabnext<cr>
-  au FileType magit nnoremap <silent> H :tabprevious<cr>
-augroup END
-
 "}}}
 
 "{{{ ---------------------- General Settings
@@ -50,7 +33,9 @@ nnoremap <silent> <leader>cf :let @+=expand("%")<CR>
 
 " Toggle folds with space
 nnoremap <Space> za
-" TODO: I'd rather make <C-Space> work again.
+"TODO: I'd rather make <C-Space> work again.
+"WARNING djkaskdj
+"
 nnoremap <M-C-Space> zc
 vnoremap <Space> za
 
@@ -64,7 +49,6 @@ nnoremap <leader>3 O- binding.pry<ESC>0:w<cr>
 
 "{{{ ---------------------- Finding stuff
 
-
 " Search for word under cursor in project
 nnoremap <leader>a viwy:Ack! <C-R>" app/ lib/ config/<cr>
 nnoremap <leader>s viwy:Ack! <C-R>" spec/<cr>
@@ -74,7 +58,6 @@ vnoremap <leader>a y:Ack! "<C-R>"" app/ lib/ config/<cr>
 vnoremap <leader>s y:Ack! "<C-R>"" spec/<cr>
 
 nnoremap <leader>fb :Ack! 'binding\.pry' **/*.{rb,erb} <cr>
-
 
 " Search for visually selected text in file
 vnoremap // y/<C-R>"<cr>
@@ -106,6 +89,7 @@ nnoremap <C-w>v :vnew<cr>
 
 "{{{ ---------------------- Navigating Files
 
+nnoremap <leader>gb :Git credit<cr>
 " Switch between the last two files
 nnoremap <Leader><Leader> <C-^>
 
@@ -153,36 +137,10 @@ nnoremap <leader>cp :Goyo<cr>
 
 "{{{ ---------------------- Plugins
 
-" Open/Close directories and or files with l,h, and space
-autocmd FileType nerdtree nmap <buffer> l o
-autocmd FileType nerdtree nmap <buffer> h x
-autocmd FileType nerdtree nmap <buffer> <Space> o
-
-" Toggle file tree wich <C-n>
-map <C-n> :NERDTreeToggle<CR>
-
 nnoremap <F3> :Tagbar<cr>
-
-nnoremap <leader>gb :Git credit<cr>
 
 " Start ArgWrap
 nnoremap <silent> <leader>w :ArgWrap<CR>
-
-" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-vmap <CR> <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-"}}}
-
-"{{{ ---------------------- Mappings from Thoughbot
-
-" vim-test mappings
-nnoremap <silent> <Leader>t :TestFile<CR>
-nnoremap <silent> <Leader>s :TestNearest<CR>
-nnoremap <silent> <Leader>l :TestLast<CR>
-nnoremap <silent> <Leader>ta :TestSuite<CR>
-nnoremap <silent> <Leader>gt :TestVisit<CR>
 
 " Run commands that require an interactive shell
 nnoremap <Leader>r :RunInInteractiveShell<Space>
@@ -193,45 +151,15 @@ nnoremap <Leader>r :RunInInteractiveShell<Space>
 " nnoremap <C-k> <C-w>k
 " nnoremap <C-h> <C-w>h
 " nnoremap <C-l> <C-w>l
-
-" Move between linting errors
-nnoremap ]r :ALENextWrap<CR>
-nnoremap [r :ALEPreviousWrap<CR>
-
-" Map Ctrl + p to open fuzzy find (FZF)
-nnoremap <c-p> :Files<cr>
-"}}} ---------------------- 
+"}}} ----------------------
 
 "{{{ ---------------------- Running Stuff
 
 "}}}
 
-"{{{ ---------------------- DISABLED
-
-" nnoremap <silent> tn :TestNearest<CR>
-" nnoremap <silent> tf :TestFile<CR>
-" nnoremap <silent> tt :TestLast<CR>
-" nnoremap <silent> tv :TestVisit<CR>
-
-"}}}
-
-"{{{ ---------------------- Snippets Mapping
-"
-" press <Tab> to expand or jump in a snippet. These can also be mapped separately
-" via <Plug>luasnip-expand-snippet and <Plug>luasnip-jump-next.
-imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
-
-" -1 for jumping backwards.
-inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
-
-snoremap <silent> <Tab> <cmd>lua require('luasnip').jump(1)<Cr>
-snoremap <silent> <S-Tab> <cmd>lua require('luasnip').jump(-1)<Cr>
-"}}}
-"
 "{{{ ---------------------- Template
 
 "}}}
-
 
 " -------------------------
 "
@@ -248,8 +176,6 @@ let g:scratch_persistence_file = '.buffer.scratch'
 nnoremap ss :ScratchPreview<cr>
 nnoremap SS :Scratch<cr>
 
-
-
 nnoremap zO zczO
 
 " Make zO recursively open whatever fold we're in, even if it's partially open.
@@ -264,8 +190,6 @@ nnoremap zO zczO
 "
 " I use :sus for the rare times I want to actually background Vim.
 " nnoremap <c-z> mzzMzvzz15<c-e>`z
-
-
 
 if executable('rg')
   let g:ackprg = 'rg --vimgrep'
@@ -355,7 +279,6 @@ au BufWinEnter *.md setlocal foldmethod=expr
 au BufWinEnter *.md setlocal foldtext=MyFoldText()
 au BufWinEnter *.md setlocal foldlevel=1
 
-
 function! MyFoldText() " {{{
     let line = getline(v:foldstart)
 
@@ -372,4 +295,3 @@ function! MyFoldText() " {{{
     return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
 endfunction " }}}
 set foldtext=MyFoldText()
-

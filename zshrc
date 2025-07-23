@@ -38,6 +38,7 @@ _load_settings() {
     fi
   fi
 }
+
 _load_settings "$HOME/.zsh/configs"
 
 # Local config
@@ -48,11 +49,9 @@ _load_settings "$HOME/.zsh/configs"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+eval "$(~/.local/bin/mise activate zsh)"
 eval "$(starship init zsh)"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-if [ "$PROFILING" = "true" ]; then
-  zprof
-fi
+# if [ "$PROFILING" = "true" ]; then
+#   zprof
+# fi

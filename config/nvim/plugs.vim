@@ -19,25 +19,12 @@ Plug 'christoomey/vim-run-interactive'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-" Uncategorized
-" --------------
-
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-projectionist'
-Plug 'tpope/vim-rhubarb'
-
-" Uncategorized
-" --------------
-Plug 'wincent/corpus'
 
 " Git
 " ----
 
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
 Plug 'jreybert/vimagit'
-Plug 'gregsexton/gitv'
-Plug 'junkblocker/git-time-lapse'
 Plug 'rhysd/git-messenger.vim'
 
 " Formatting and working with text
@@ -50,36 +37,17 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-repeat'
-Plug 'vim-scripts/tComment'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'kana/vim-textobj-user'
-Plug 'rhysd/vim-textobj-ruby'
 
+Plug 'rhysd/vim-textobj-ruby'
+Plug 'vim-scripts/tComment'
 " Finding stuff
 " --------------
-
-" Plug 'ctrlpvim/ctrlp.vim' " Temporaily commented out since thoughtbot uses fzf
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" Plug 'majutsushi/tagbar'
-Plug 'mileszs/ack.vim'
-Plug 'junegunn/fzf.vim'
 
 " Visuals or Focusing
 " --------------------
 
-Plug 'junegunn/goyo.vim'
-Plug 'edkolev/tmuxline.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'dhruvasagar/vim-zoom'
-
-" Productivity
-" --------------------
-"  Running from within vim
-"
-Plug 'tpope/vim-dispatch'
-Plug 'vim-test/vim-test'
-Plug 'neomake/neomake'
 
 " Themes
 " -------

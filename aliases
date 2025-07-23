@@ -50,6 +50,9 @@ alias staged='git diff --staged'
 alias unstaged='git diff'
 alias u='git add -u'
 
+# Gitlab
+alias cis="glab ci status -l"
+
 # Theme
 alias night='sh ~/Share/base16-shell/scripts/base16-tomorrow-night.sh'
 alias day='sh ~/Share/base16-shell/scripts/base16-atelier-forest-light.sh'
@@ -131,3 +134,9 @@ alias tspw=tspasswords
 alias ticket-numbers='git log --oneline production..staging | grep -Eo "\s#[0-9]+" | sort | uniq'
 alias tickets='git log --oneline production..staging'
 alias k9s="docker run --rm -it -v ~/.kube/config:/root/.kube/config quay.io/derailed/k9s"
+
+alias wgd="sudo wg-quick down wg0"
+alias wgu="sudo wg-quick up wg0"
+
+alias zd=lazydocker
+alias dv=devcontainer
