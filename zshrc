@@ -1,4 +1,5 @@
 # PROFILING=true
+autoload -Uz compinit
 
 if [ "$PROFILING" = "true" ]; then
   zmodload zsh/zprof
@@ -48,10 +49,10 @@ _load_settings "$HOME/.zsh/configs"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+eval "$(mise activate zsh)"
+source <(fzf --zsh)
 eval "$(starship init zsh)"
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="$PATH:/home/max/.local/share/bob/nvim-bin"
 
 if [ "$PROFILING" = "true" ]; then
   zprof

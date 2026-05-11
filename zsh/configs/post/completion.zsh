@@ -1,5 +1,7 @@
+# FIXME: The whole completions stuff should be handled differently. Have a look at carapace
+
 # load our own completion functions
-fpath=(~/.zsh/completion /usr/local/share/zsh/site-functions $fpath)
+#fpath=(~/.zsh/completion /usr/local/share/zsh/site-functions $fpath)
 
 
 # FIXME This is adding about 300ms to the startup time so lets not do this for
@@ -15,4 +17,4 @@ fpath=(~/.zsh/completion /usr/local/share/zsh/site-functions $fpath)
 
 # disable zsh bundled function mtools command mcd
 # which causes a conflict.
-compdef -d mcd
+#compdef -d mcd
