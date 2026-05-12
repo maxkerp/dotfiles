@@ -1,8 +1,9 @@
 # ── ~/.config/zsh/.zshrc ──────────────────────────────────────────────────────
 # Entry point for interactive zsh shells.  Delegates to modular files in
-# config/, adds functions/ + completions/ to fpath, and launches integrations.
-# Drop a new NN-name.zsh into config/ to add functionality — nothing else
-# to wire up.
+# config/ (sourced before compinit) and config-post/ (sourced after),
+# adds functions/ + completions/ to fpath, and launches integrations.
+# Drop a new NN-name.zsh into config/ or config-post/ to add functionality
+# — nothing else to wire up.
 # ───────────────────────────────────────────────────────────────────────────────
 
 # ── options (must come first) ──────────────────────────────────────────────────
@@ -30,6 +31,9 @@ else
   # compile the dump for even faster subsequent loads
   zcompile "$ZSH_CACHE_DIR/.zcompdump" 2>/dev/null
 fi
+
+# ── post-compinit modules (carapace, etc.) ──────────────────────────────────────
+for f in "$ZDOTDIR"/config-post/*.zsh(N-.); do source "$f"; done
 
 # ── local machine config (not tracked in git) ──────────────────────────────────
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
