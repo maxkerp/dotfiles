@@ -13,4 +13,3 @@ function _append_less () {
 
 zle -N _append_less
 bindkey '^[l' _append_less
-
