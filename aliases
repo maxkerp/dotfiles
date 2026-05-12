@@ -1,26 +1,15 @@
-alias ".."="source ~/.zshrc"
+alias "reload"="source ~/.zshrc"
 
-# COLORS and other defaults
-alias ls="ls --color --group-directories-first -F"
+alias ".."="cd .."
+
 alias grep="grep --color"
 alias ip="ip -color"
 
-# Unix
-fun_dirs(){
-  if [ -z $1 ]; then
-    PLACE='.'
-  else
-    PLACE=$1
-  fi
-
-  ls -1 $PLACE | grep "\/$" | rev | cut -c 2- | rev
-}
-
-alias dirs=fun_dirs
 
 alias files="ls | grep -v /"
 alias path='echo $PATH | tr -s ":" "\n"'
 
+alias ls="eza --group-directories-first"
 alias l='ls -1'
 alias la='ls -1 -A'
 alias ll="ls -l -A"
@@ -50,42 +39,6 @@ alias staged='git diff --staged'
 alias unstaged='git diff'
 alias u='git add -u'
 
-# Theme
-alias night='sh ~/Share/base16-shell/scripts/base16-tomorrow-night.sh'
-alias day='sh ~/Share/base16-shell/scripts/base16-atelier-forest-light.sh'
-
-
-# Bundler
-alias b="bundle"
-
-# Rails
-alias migrate="rake db:migrate db:rollback && rake db:migrate db:test:prepare"
-
-# RSpec
-# Requires config.example_status_persistence_file_path to be set.
-alias f='rspec --only-failures'
-alias n='rspec --next'
-
-alias rr='DISABLE_PRY=true rspec'
-alias ff='DISABLE_PRY=true rspec --only-failures'
-alias nn='DISABLE_PRY=true rspec --next'
-
-alias rdc='run_specs_diffrent_in_this_commit'
-alias rdb='run_specs_diffrent_on_this_branch'
-
-alias files_different_on_this_branch='git diff --diff-filter=AM --name-status master..HEAD | grep .rb | cut -c 3- | paste -sd " "'
-alias files_different_in_this_commit='git diff --diff-filter=AM --name-status HEAD | grep .rb | cut -c 3- | paste -sd " "'
-
-
-alias spec_files_different_on_this_branch='git diff --diff-filter=AM --name-status master..HEAD | grep _spec.rb | cut -c 3- | paste -sd " "'
-alias spec_files_different_in_this_commit='git diff --diff-filter=AM --name-status HEAD | grep _spec.rb | cut -c 3- | paste -sd " "'
-
-alias run_specs_diffrent_in_this_commit='bundle exec rspec $(spec_files_different_in_this_commit)'
-alias run_specs_diffrent_on_this_branch='bundle exec rspec $(spec_files_different_on_this_branch)'
-
-
-alias lint_files_different_in_this_commit='bundle exec rubocop $(files_different_in_this_commit)'
-alias lint_spec_files_different_in_this_commit='bundle exec rubocop $(spec_files_different_in_this_commit)'
 
 #FZF Magic
 alias aptinfo='apt list --installed | fzf | cut -d'/' -f1 | xargs apt show'
@@ -103,31 +56,3 @@ function aptexplore(){
 function manexplore(){
   apropos $1 | fzf --reverse +s | cut -d' ' -f1 | xargs man
 }
-
-function create_aptfile(){
-  grep "^sudo.*apt.* install" ~/.zhistory \
-  | sed -E "s/.*sudo apt.* install//" \
-  | sed -E "s/--.* //" \
-  | tr " " "\n" \
-  | grep -v -e "^$" \
-  | sort \
-  | uniq \
-  | comm -13 ~/dotfiles/Aptfile - \
-  > ~/dotfiles/Aptfile.tmp
-
-}
-
-function tspasswords() {
-  TS_PASSWORD_SCRIPT="$HOME/Config/tspassword.sh"
-  if [ -f $TS_PASSWORD_SCRIPT ]; then
-    $TS_PASSWORD_SCRIPT $1
-  else
-    echo 'Can not find snippet' 1>&2
-    return 1
-  fi
-}
-alias tspw=tspasswords
-
-alias ticket-numbers='git log --oneline production..staging | grep -Eo "\s#[0-9]+" | sort | uniq'
-alias tickets='git log --oneline production..staging'
-alias k9s="docker run --rm -it -v ~/.kube/config:/root/.kube/config quay.io/derailed/k9s"
