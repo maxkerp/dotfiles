@@ -63,3 +63,7 @@
 [credential "https://git.taktsoft.com"]
 	helper = 
 	helper = !/usr/bin/glab auth git-credential
+[difftool "nvim"]
+	cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
+[merge]
+	tool = nvim

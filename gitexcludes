@@ -1,5 +1,7 @@
 # Here are all filetypes which should be ignored in all git repositories
 
+devbox.json
+devbox.lock
 *.swp
 *.swo
 tags
@@ -10,3 +12,5 @@ tags
 .deprecations
 .workspace.tmux
 .node-version
+.gitlab-ci-local
+.gitlab-ci-local-env

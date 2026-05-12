@@ -66,12 +66,12 @@ alias migrate="rake db:migrate db:rollback && rake db:migrate db:test:prepare"
 
 # RSpec
 # Requires config.example_status_persistence_file_path to be set.
-alias f='rspec --only-failures'
-alias n='rspec --next'
+alias f='bundle exec rspec --only-failures'
+alias n='bundle exec rspec --next'
 
-alias rr='DISABLE_PRY=true rspec'
-alias ff='DISABLE_PRY=true rspec --only-failures'
-alias nn='DISABLE_PRY=true rspec --next'
+alias rr='DISABLE_PRY=true bundle exec rspec'
+alias ff='DISABLE_PRY=true bundle exec rspec --only-failures'
+alias nn='DISABLE_PRY=true bundle exec rspec --next'
 
 alias rdc='run_specs_diffrent_in_this_commit'
 alias rdb='run_specs_diffrent_on_this_branch'
@@ -140,3 +140,4 @@ alias wgu="sudo wg-quick up wg0"
 
 alias zd=lazydocker
 alias dv=devcontainer
+alias tsc="just -f /home/max/Git/tscloud/ansible/Justfile"
