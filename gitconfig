@@ -1,13 +1,18 @@
+[include]
+	path = ~/.config/git/catppuccin.gitconfig
+
 [user]
   name = Maximilian Kerp
   email = kerp@taktsoft.com
 [init]
   templatedir = ~/.git_template
+[interactive]
+    diffFilter = delta --color-only
 [core]
   autocrlf = input
   editor = nvim
   excludesfile = ~/.gitexcludes
-  pager="diff-so-fancy | less --tabs=4 -RFX"
+  pager = delta
   attributesfile = /home/make/.gitattributes
 [push]
   default = current
@@ -19,8 +24,8 @@
   autosquash = true
 [commit]
   template = ~/.gitmessage
-[diff]
-  colorMoved = plain
+[merge]
+    conflictStyle = zdiff3
 [diff "enc"]
   textconv = "rails encrypted:show"
   cachetextconv = false
@@ -47,15 +52,7 @@
   prune-merged-branches = !git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -d
 [color]
   ui = auto
-[color "diff-highlight"]
-  oldNormal = red bold
-  oldHighlight = red bold 52
-  newNormal = green bold
-  newHighlight = green bold 22
-[color "diff"]
-  meta = yellow bold
-  frag = yellow bold
-  commit = yellow bold
-  old = red bold
-  new = green bold
-  whitespace = red reverse
+[delta]
+    # side-by-side: line number color is broken...
+    features = line-numbers catppuccin-mocha
+    navigate = true  # use n and N to move between diff sections
