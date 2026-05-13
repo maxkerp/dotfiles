@@ -1,9 +1,0 @@
-# caches / generated data
-.zcompdump*
-.zhistory
-
-# local overrides (not tracked in git)
-.zshrc.local
-.zshenv.local
-.secrets
-*.local
