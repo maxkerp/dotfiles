@@ -1,51 +1,37 @@
 # dotfiles
-=======
 
-These are my dotfiles. I use `rcm` to get a productive dev setup working within
-minutes. Most of this stuff is copied/stolen from a lot of different sources
-over the years. I you find something you like go ahead and take it :).
-The project structures is copied over from [thoughtbot's
-dotfiles](https://github.com/thoughtbot/dotfiles). Don't forget to checkout
-their dotfiles.
+Personal dotfiles managed with [rcm](https://github.com/thoughtbot/rcm).
 
-Requirements
-------------
+## Requirements
 
-Set zsh as your login shell:
+- **git** — clone the repo
+- **zsh** — set as login shell (`chsh -s $(which zsh)`)
+- **rcm** — dotfile management (`apt install rcm` / `brew install rcm`)
+- **tmux** — terminal multiplexer
+- **mise** — dev environment manager
+- **bob/nvim** — neovim version manager/neovim
 
-    chsh -s $(which zsh)
+## Install
 
-Install [rcm](https://github.com/thoughtbot/rcm) on your machine.
+Clone into place:
 
-Install
--------
+```
+git clone git@github.com:maxkerp/dotfiles.git ~/Git/dotfiles
+```
 
-Clone onto your laptop:
+First-time setup:
 
-    git clone git://github.com/thoughtbot/dotfiles.git ~/dotfiles
+```
+env RCRC=$HOME/Git/dotfiles/rcrc rcup
+```
 
-Install the dotfiles:
+After that, `rcup` works without `RCRC` (the repo's `rcrc` is symlinked to `~/.rcrc`).
 
-    env RCRC=$HOME/dotfiles/rcrc rcup
+## What's included
 
-After the initial installation, you can run `rcup` without the one-time variable
-`RCRC` being set (`rcup` will symlink the repo's `rcrc` to `~/.rcrc` for future
-runs of `rcup`). [See
-example](https://github.com/thoughtbot/dotfiles/blob/master/rcrc).
+| Repo path | Linked to | Purpose |
+|---|---|---|
+| `config/tmux/` | `~/.config/tmux/` | Tmux config files |
+| `config/zsh/` | `~/.config/zsh/` | Zsh config |
+| `local/bin/` | `~/.local/bin/` | Standalone scripts on `$PATH` |
 
-This command will create symlinks for config files in your home directory.
-Setting the `RCRC` environment variable tells `rcup` to use standard
-configuration options:
-
-Disclaimer
-------------
-
-I blatantly stole most of this repo from [thoughtbot's
-dotfiles](https://github.com/thoughtbot/dotfiles). I did not fork the repo for
-the following reasons:
-
-* I'm just getting started with `rcm` and I can not see how I would get my setup
-  up and running with the suggested use of `dotfiles-local`.
-* I want to expand this repository to include an `Aptfile` and `install.sh`
-  so I only have to `wget` the `install.sh` and it sets everything up for me on
-  a bare machine.
