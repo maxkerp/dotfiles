@@ -28,9 +28,11 @@ init(){
   fi
 }
 
+default_workspace="${XDG_CONFIG_HOME:-$HOME/.config}/tmux/workspace.tmux"
+
 if [[ -f "$PWD/.workspace.tmux" ]]; then
   init < "$PWD/.workspace.tmux"
-elif [[ -f "$HOME/.workspace.tmux" ]]; then
-  init < "$HOME/.workspace.tmux"
+elif [[ -f "$default_workspace" ]]; then
+  init < "$default_workspace"
 fi
 
