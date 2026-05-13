@@ -1,5 +1,5 @@
 [include]
-	path = ~/.config/git/catppuccin.gitconfig
+	path = catppuccin.gitconfig
 
 [user]
   name = Maximilian Kerp
@@ -11,9 +11,7 @@
 [core]
   autocrlf = input
   editor = nvim
-  excludesfile = ~/.gitexcludes
   pager = delta
-  attributesfile = /home/make/.gitattributes
 [push]
   default = current
 [pull]
@@ -23,7 +21,7 @@
 [rebase]
   autosquash = true
 [commit]
-  template = ~/.gitmessage
+  template = ~/.config/git/message
 [merge]
     conflictStyle = zdiff3
 [diff "enc"]

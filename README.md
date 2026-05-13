@@ -8,7 +8,7 @@ Personal dotfiles managed with [rcm](https://github.com/thoughtbot/rcm).
 - **zsh** — set as login shell (`chsh -s $(which zsh)`)
 - **rcm** — dotfile management (`apt install rcm` / `brew install rcm`)
 - **tmux** — terminal multiplexer
-- **mise** — dev environment manager
+- **mise** — dev environment manager (takes care of most othere requirements liek `fzf`, `carapace`, `starship`, ...)
 - **bob/nvim** — neovim version manager/neovim
 
 ## Install

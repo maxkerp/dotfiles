@@ -7,6 +7,7 @@ Personal dotfiles managed with [rcm](https://github.com/thoughtbot/rcm).
 | Repo path | Linked to | Purpose |
 |---|---|---|
 | `config/tmux/` | `~/.config/tmux/` | Tmux config files |
+| `config/git/` | `~/.config/git/` | Git config (auto-read via XDG) |
 | `config/zsh/` | `~/.config/zsh/` | Zsh config (`.` prefix → file itself) |
 | `local/bin/` | `~/.local/bin/` | Standalone scripts on `$PATH` |
 
