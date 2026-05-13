@@ -1,0 +1,34 @@
+#!/bin/bash
+GIT_DIR="$HOME/Git"
+
+current_session=$(tmux display-message -p '#S' 2>/dev/null)
+
+items=""
+t=$'\t'
+
+while IFS= read -r s; do
+  items+="$s${t}active${t}$s"$'\n'
+done < <(tmux list-sessions -F '#S' 2>/dev/null | grep -v "^$current_session$")
+
+for item in "$GIT_DIR"/*; do
+  [ -d "$item" ] || continue
+  base=$(basename "$item")
+  if [ -d "$item/.git" ] || git -C "$item" rev-parse --git-dir >/dev/null 2>&1; then
+    items+="$base${t}-${t}$item"$'\n'
+  else
+    for child in "$item"/*; do
+      [ -d "$child" ] || continue
+      if [ -d "$child/.git" ] || git -C "$child" rev-parse --git-dir >/dev/null 2>&1; then
+        cbase=$(basename "$child")
+        items+="$cbase${t}$base${t}$child"$'\n'
+      fi
+    done
+  fi
+done
+
+selection=$(echo -n "$items" | fzf --delimiter="$t" --with-nth=1,2 --tiebreak=index --color=16 --height=40% --reverse)
+
+if [ -n "$selection" ]; then
+  action=$(echo "$selection" | cut -f3)
+  tat "$action"
+fi

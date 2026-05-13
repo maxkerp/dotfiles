@@ -6,3 +6,5 @@
 
 export ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.local/cache}/zsh"
 [[ -d "$ZSH_CACHE_DIR" ]] || mkdir -p "$ZSH_CACHE_DIR"
+
+export PATH="$HOME/.local/bin:$HOME/.local/share/mise/shims:$PATH"

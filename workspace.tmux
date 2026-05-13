@@ -1,6 +1,4 @@
 Vim: -
-Specs: -
-Console: -
-Term: -
+Opencode: -
 Git: -
-Server: -
+Term: -
