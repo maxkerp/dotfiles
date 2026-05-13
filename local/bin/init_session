@@ -1,17 +1,31 @@
 #!/bin/bash
 # Initialize session with windows from .workspace.tmux
+# Replaces all existing windows with those defined in the file.
 
 init(){
-  index=1
+  this_window=$(tmux display-message -p '#{window_id}')
+
+  # Kill all other windows (script runs in this_window, so it survives)
+  for id in $(tmux list-windows -F '#{window_id}'); do
+    [ "$id" != "$this_window" ] && tmux kill-window -t "$id"
+  done
+
+  first=true
   while IFS=: read -r name cmd; do
     cmd="${cmd## }"
-    if [[ "$cmd" = "-" ]]; then
-      tmux new-window -kd -n "$name"
+    if $first; then
+      # Repurpose this window for the first entry
+      tmux rename-window -t "$this_window" "$name"
+      [[ "$cmd" != "-" ]] && tmux send-keys -t "$this_window" "$cmd" Enter
+      first=false
     else
-      tmux new-window -kd -n "$name" "$cmd"
+      [[ "$cmd" = "-" ]] && tmux new-window -d -n "$name" || tmux new-window -d -n "$name" "$cmd"
     fi
-    ((index++))
   done
+
+  if $first; then
+    tmux rename-window -t "$this_window" "scratch"
+  fi
 }
 
 if [[ -f "$PWD/.workspace.tmux" ]]; then
