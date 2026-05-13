@@ -89,7 +89,7 @@ for norm in "${sorted_repos[@]}"; do
   fi
 done
 
-selection=$(echo -n "$items" | fzf --header="  Active Sessions" --delimiter="$t" --with-nth=1,2 --tiebreak=index --color=16 --height=40% --reverse)
+selection=$(echo -n "$items" | fzf --header="Active Sessions" --delimiter="$t" --with-nth=1,2 --tiebreak=index --color=16 --height=40% --reverse)
 
 if [ -n "$selection" ]; then
   action=$(echo "$selection" | cut -f3)
