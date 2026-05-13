@@ -1,4 +1,5 @@
 [tools]
+"aqua:tealdeer-rs/tealdeer" = "latest"
 bat = "latest"
 carapace = "latest"
 delta = "latest"
