@@ -1,4 +1,4 @@
-setopt hist_ignore_all_dups inc_append_history
+setopt hist_ignore_all_dups share_history
 HISTFILE="$ZSH_CACHE_DIR/.zhistory"
 export HISTSIZE=150000
 export SAVEHIST=100000
