@@ -1,6 +1,7 @@
 [tools]
 "aqua:joshmedeski/sesh" = "latest"
 "aqua:tealdeer-rs/tealdeer" = "latest"
+atuin = "latest"
 bat = "latest"
 carapace = "latest"
 delta = "latest"
