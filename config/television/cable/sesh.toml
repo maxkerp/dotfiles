@@ -11,7 +11,7 @@ no_sort = true
 
 [[source.command]]
 name = "Active Sessions"
-run = "sesh list -Hit --icons"
+run = "sesh list -Hit"
 
 [[source.command]]
 name = "Git Repos"
