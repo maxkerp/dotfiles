@@ -35,6 +35,9 @@ fi
 # ── post-compinit modules (carapace, etc.) ──────────────────────────────────────
 for f in "$ZDOTDIR"/config-post/*.zsh(N-.); do source "$f"; done
 
+# ── deduplicate PATH ────────────────────────────────────────────────────────────
+typeset -gU PATH
+
 # ── local machine config (not tracked in git) ──────────────────────────────────
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
