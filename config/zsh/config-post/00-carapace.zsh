@@ -1,1 +1,0 @@
-source <(carapace _carapace)

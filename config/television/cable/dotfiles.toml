@@ -1,0 +1,33 @@
+[metadata]
+name = "dotfiles"
+description = "A channel to select from your user's dotfiles"
+requirements = ["fd", "bat"]
+
+[source]
+
+[[source.command]]
+name = "All"
+run = "fd -t f -t l . $HOME/.config"
+
+[[source.command]]
+name = "Symlinks"
+run = "fd -t l . $HOME/.config"
+
+[preview]
+command = "bat -n --color=always '{}'"
+
+[keybindings]
+enter = "actions:edit"
+ctrl-r = "actions:make-rc"
+
+[actions.edit]
+description = "Edit the selected dotfile"
+command = "${EDITOR:-vim} '{}'"
+shell = "bash"
+mode = "execute"
+
+[actions.make-rc]
+description = "Edit the selected dotfile"
+command = "mkrc -v '{}'"
+shell = "bash"
+mode = "execute"

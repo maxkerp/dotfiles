@@ -1,4 +1,5 @@
 [tools]
+"aqua:joshmedeski/sesh" = "latest"
 "aqua:tealdeer-rs/tealdeer" = "latest"
 bat = "latest"
 carapace = "latest"
@@ -14,3 +15,5 @@ opencode = "latest"
 oxker = "latest"
 ripgrep = "latest"
 starship = "latest"
+television = "latest"
+zoxide = "latest"

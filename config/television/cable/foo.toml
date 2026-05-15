@@ -1,0 +1,19 @@
+[metadata]
+name = "foo"
+
+[source]
+display = "{split:/:-2..|join: }"
+output = "{split: :-1}"
+
+[[source.command]]
+name = "Dir"
+run = "fd -t d -L -HI '\\.git$' ~/Git -x echo ' {//}' | sort"
+
+[[source.command]]
+name = "asdf"
+run = "fd -t d -L -HI '\\.git$' ~/Git -x echo '{//}' | sort"
+
+
+[ui.status_bar]
+hidden = true
+

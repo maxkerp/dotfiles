@@ -1,0 +1,44 @@
+[metadata]
+name = "sesh"
+description = "Session manager integrating tmux sessions, zoxide directories, and config paths"
+requirements = [ "sesh", "fd",]
+
+[source]
+ansi = true
+frecency = false
+no_sort = true
+#output = "{strip_ansi|split: :1..|join: }"
+
+[[source.command]]
+name = "Active Sessions"
+run = "sesh list -Hit --icons"
+
+[[source.command]]
+name = "Git Repos"
+run = "fd -t d -L -HI '\\.git$' ~/Git -x echo ' {//}' | sort"
+output = "{strip_ansi|split: :1|split:/:-1..2}"
+
+[[source.command]]
+name = "Frequently used dirs"
+run = "sesh list -z --icons"
+
+[preview]
+command = "sesh preview '{strip_ansi|split: :1..|join: }'"
+
+[keybindings]
+enter = "actions:connect"
+ctrl-d = [ "actions:kill_session", "reload_source",]
+
+[actions.connect]
+description = "Connect to selected session"
+command = "sesh connect '{strip_ansi|split: :1..|join: }'"
+mode = "execute"
+
+[actions.kill_session]
+description = "Kill selected tmux session (press Ctrl+r to reload)"
+command = "tmux kill-session -t '{strip_ansi|split: :1..|join: }'"
+mode = "fork"
+
+[ui.status_bar]
+hidden = true
+
