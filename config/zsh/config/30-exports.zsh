@@ -1,3 +1,10 @@
+# Dotfiles scripts on PATH (avoids rcm linking each file in local/bin)
+export PATH="$HOME/Git/dotfiles/local/bin:$PATH"
+
+export VISUAL=nvim
+export EDITOR=$VISUAL
+export PAGER=bat
+
 # enable colored output from ls, etc. on FreeBSD-based systems
 export CLICOLOR=1
 

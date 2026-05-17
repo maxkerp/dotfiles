@@ -1,2 +1,2 @@
-EXCLUDES=".gitignore Aptfile AGENTS.md README*.md LICENSE docs utils"
+EXCLUDES=".gitignore Aptfile AGENTS.md README*.md LICENSE docs utils local/bin"
 DOTFILES_DIRS="$HOME/Git/dotfiles"

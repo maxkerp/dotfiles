@@ -1,0 +1,24 @@
+#!/bin/zsh -l
+setopt err_return pipe_fail
+
+main() {
+  print "Refreshing package index..."
+  sudo apt update
+
+  local updates
+  updates=$(apt list --upgradable 2>/dev/null | tail -n +2)
+
+  if [[ -z "$updates" ]]; then
+    print "No apt updates available."
+    return 0
+  fi
+
+  print "Available updates:"
+  print "$updates"
+
+  gum confirm "Proceed with apt upgrade?" || return 0
+
+  sudo apt upgrade -y
+}
+
+main "$@"

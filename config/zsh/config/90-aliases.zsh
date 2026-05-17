@@ -7,7 +7,7 @@ alias files='ls | grep -v /'
 alias path='echo $PATH | tr -s ":" "\n"'
 
 # ── ls (eza) ───────────────────────────────────────────────────────────────────
-alias ls='eza --group-directories-first'
+alias ls='eza --group-directories-first --icons=always'
 alias l='ls -1'
 alias la='ls -1 -A'
 alias ll='ls -l -A'
@@ -42,6 +42,8 @@ alias u='git add -u'
 alias aptinfo='apt list --installed | fzf | cut -d'/' -f1 | xargs apt show'
 alias br='git branch | grep -v '^\*' | fzf --reverse --height=40% | xargs git checkout'
 alias tldrs='tldr -l | tr -s ", " "\n" | fzf --reverse --preview="tldr {}" --preview-window 70%'
+
+# ── Maintenance ────────────────────────────────────────────────────────────────
 
 function aptexplore(){
   apt search "$1" 2> /dev/null | \

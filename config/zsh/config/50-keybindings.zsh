@@ -7,7 +7,7 @@ zle -N edit-command-line
 bindkey '\C-z\C-e' edit-command-line
 
 function _append_less () {
-    BUFFER="$BUFFER | less -RSXFN"
+    BUFFER="$BUFFER | $PAGER"
     zle .accept-line
 }
 

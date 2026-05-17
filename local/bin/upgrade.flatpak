@@ -1,0 +1,27 @@
+#!/bin/zsh -l
+setopt err_return pipe_fail
+
+main() {
+  local updates
+  updates=$(flatpak remote-ls --updates 2>/dev/null)
+
+  if [[ -z "$updates" ]]; then
+    print "No flatpak updates available."
+    return 0
+  fi
+
+  print "Available updates:"
+  print "$updates"
+
+  local selected
+  selected=$(print "$updates" | gum choose --no-limit --header "Select apps to update:")
+
+  if [[ -z "$selected" ]]; then
+    print "No apps selected. Skipping."
+    return 0
+  fi
+
+  print "$selected" | flatpak update -y
+}
+
+main "$@"

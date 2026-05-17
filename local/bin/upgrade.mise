@@ -1,0 +1,21 @@
+#!/bin/zsh -l
+setopt err_return pipe_fail
+
+main() {
+  local updates
+  updates=$(mise ls --outdated 2>/dev/null)
+
+  if [[ -z "$updates" ]]; then
+    print "No mise tool updates available."
+  else
+    print "Outdated tools:"
+    print "$updates"
+
+    gum confirm "Upgrade mise-managed tools?" || return 0
+    mise upgrade
+  fi
+
+  gum confirm "Update mise itself? (mise self-update)" && mise self-update
+}
+
+main "$@"

@@ -35,6 +35,9 @@ history_size = 200
 # When false: history navigation is scoped to the current channel
 global_history = false
 
+[previewers.file]
+theme = "Catppuccin Mocha"
+
 [ui]
 # How much space to allocate for the UI (in percentage of the screen)
 # ┌─────────────────────────┐
