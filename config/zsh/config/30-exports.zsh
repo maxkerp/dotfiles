@@ -1,5 +1,9 @@
+# Dotfiles root (overridable via env before sourcing)
+export DOTFILES_ROOT_DIR="${DOTFILES_ROOT_DIR:-$HOME/Git/dotfiles}"
+export ZSHARE="$DOTFILES_ROOT_DIR/share/zsh"
+
 # Dotfiles scripts on PATH (avoids rcm linking each file in local/bin)
-export PATH="$HOME/Git/dotfiles/local/bin:$PATH"
+export PATH="$DOTFILES_ROOT_DIR/local/bin:$PATH"
 
 export VISUAL=nvim
 export EDITOR=$VISUAL

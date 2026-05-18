@@ -1,0 +1,9 @@
+echo "Available Options:"
+echo "------------------"
+for long in ${(k)_opt_helps}; do
+    local short=""
+    for s l in ${(kv)_opt_aliases}; do
+        [[ "$l" == "$long" ]] && short="-$s, " && break
+    done
+    printf "  %-6s%-15s %s (Default: %s)\n" "$short" "--$long" "$_opt_helps[$long]" "$_opt_defaults[$long]"
+done

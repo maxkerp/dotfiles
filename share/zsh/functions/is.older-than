@@ -1,0 +1,16 @@
+if (( $# != 2 )); then
+    echo "Error: is.older-than requires a filename and number of days." >&2
+    return 1
+fi
+
+local target_file=$1
+local days=$2
+
+if [[ ! "$days" =~ ^[0-9]+$ ]]; then
+    echo "Error: '$days' is not a valid number of days." >&2
+    return 1
+fi
+
+local hours=$(( days * 24 ))
+
+[[ -n ${target_file}(Nmh+${hours}) ]]

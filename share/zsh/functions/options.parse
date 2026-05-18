@@ -1,0 +1,38 @@
+typeset -g -A opts
+
+for k v in ${(kv)_opt_defaults}; do
+    opts[$k]=$v
+done
+
+while (( $# > 0 )); do
+    case "$1" in
+        --*)
+            local key=${1#--}
+            if [[ "$_opt_defaults[$key]" == "true" || "$_opt_defaults[$key]" == "false" ]]; then
+                opts[$key]="true"
+                shift 1
+            else
+                opts[$key]=$2
+                shift 2
+            fi
+            ;;
+        -*)
+            local char=${1#-}
+            local key=$_opt_aliases[$char]
+            if [[ -n "$key" ]]; then
+                if [[ "$_opt_defaults[$key]" == "true" || "$_opt_defaults[$key]" == "false" ]]; then
+                    opts[$key]="true"
+                    shift 1
+                else
+                    opts[$key]=$2
+                    shift 2
+                fi
+            else
+                shift 1
+            fi
+            ;;
+        *)
+            shift
+            ;;
+    esac
+done

@@ -1,0 +1,9 @@
+[[ ${(t)_opt_defaults} != *association* ]] && typeset -g -A _opt_defaults
+[[ ${(t)_opt_aliases} != *association* ]]  && typeset -g -A _opt_aliases
+[[ ${(t)_opt_helps} != *association* ]]    && typeset -g -A _opt_helps
+
+local short=$1 long=$2 default=$3 help=$4
+
+_opt_aliases[$short]=$long
+_opt_defaults[$long]=$default
+_opt_helps[$long]=$help

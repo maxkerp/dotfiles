@@ -1,0 +1,9 @@
+fpath=(
+  "$ZSHARE/functions"
+  "$HOME/.local/share/zsh/functions"
+  $fpath
+)
+
+for dir in "$ZSHARE/functions" "$HOME/.local/share/zsh/functions"; do
+  [[ -d "$dir" ]] && for f in "$dir"/*(N-.); do autoload -Uz "${f:t}"; done
+done
