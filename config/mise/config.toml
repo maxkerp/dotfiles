@@ -1,6 +1,7 @@
 [tools]
 "aqua:joshmedeski/sesh" = "latest"
 "aqua:tealdeer-rs/tealdeer" = "latest"
+"aqua:zk-org/zk" = "latest"
 atuin = "latest"
 bat = "latest"
 carapace = "latest"
@@ -20,4 +21,5 @@ pi = "latest"
 ripgrep = "latest"
 starship = "latest"
 television = "latest"
+yq = "latest"
 zoxide = "latest"
