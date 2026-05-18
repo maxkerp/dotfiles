@@ -30,8 +30,9 @@ After that, `rcup` works without `RCRC` (the repo's `rcrc` is symlinked to `~/.r
 ## What's included
 
 | Repo path | Linked to | Purpose |
-|---|---|---|
+|---|---|---|---|
 | `config/tmux/` | `~/.config/tmux/` | Tmux config files |
 | `config/zsh/` | `~/.config/zsh/` | Zsh config |
 | `local/bin/` | `~/.local/bin/` | Standalone scripts on `$PATH` |
+| `share/zsh/functions/` | _(referenced by `$DOTFILES_ROOT_DIR`)_ | Version-controlled zsh functions (body-only, autoloaded) |
 

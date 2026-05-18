@@ -2,8 +2,8 @@
 
 Two places to put executable code in this repo:
 
-| | `config/zsh/functions/` | `local/bin/` |
-|---|---|---|
+| | `share/zsh/functions/` | `local/bin/` |
+|---|---|---|---|
 | Loaded via | `autoload -Uz` (lazy, in-process) | `$PATH` symlink (subprocess) |
 | Language | zsh | sh/bash (any shell) |
 | Can modify shell state | Yes (cd, export, alias, etc.) | No (runs in child process) |

@@ -1,7 +1,7 @@
 # ── ~/.config/zsh/.zshrc ──────────────────────────────────────────────────────
 # Entry point for interactive zsh shells.  Delegates to modular files in
 # config/ (sourced before compinit) and config-post/ (sourced after),
-# adds functions/ + completions/ to fpath, and launches integrations.
+# adds share/zsh/functions/ + completions/ to fpath, and launches integrations.
 # Drop a new NN-name.zsh into config/ or config-post/ to add functionality
 # — nothing else to wire up.
 # ───────────────────────────────────────────────────────────────────────────────
@@ -9,18 +9,23 @@
 # ── options (must come first) ──────────────────────────────────────────────────
 setopt extendedglob
 
+# ── dotfiles root (overridable via env) ───────────────────────────────────────
+: ${DOTFILES_ROOT_DIR:=$HOME/Git/dotfiles}
+
 # ── config modules (sourced in sorted order) ───────────────────────────────────
 for f in "$ZDOTDIR"/config/*.zsh(N-.); do source "$f"; done
 
 # ── fpath: functions (autoloaded lazily) and completions (picked up by compinit)
 fpath=(
-  "$ZDOTDIR/functions"
+  "$DOTFILES_ROOT_DIR/share/zsh/functions"
+  "$HOME/.local/share/zsh/functions"
   "$ZDOTDIR/completions"
   $fpath
 )
 
-# autoload user functions by file name
-for f in "$ZDOTDIR"/functions/*(N-.); do autoload -Uz "${f:t}"; done
+for dir in "$DOTFILES_ROOT_DIR/share/zsh/functions" "$HOME/.local/share/zsh/functions"; do
+  [[ -d "$dir" ]] && for f in "$dir"/*(N-.); do autoload -Uz "${f:t}"; done
+done
 
 # ── completions ────────────────────────────────────────────────────────────────
 autoload -Uz compinit

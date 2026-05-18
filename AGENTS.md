@@ -5,11 +5,12 @@ Personal dotfiles managed with [rcm](https://github.com/thoughtbot/rcm).
 ## Structure
 
 | Repo path | Linked to | Purpose |
-|---|---|---|
+|---|---|---|---|
 | `config/tmux/` | `~/.config/tmux/` | Tmux config files |
 | `config/git/` | `~/.config/git/` | Git config (auto-read via XDG) |
 | `config/zsh/` | `~/.config/zsh/` | Zsh config (`.` prefix → file itself) |
 | `local/bin/` | `~/.local/bin/` | Standalone scripts on `$PATH` |
+| `share/zsh/functions/` | _(referenced by `$DOTFILES_ROOT_DIR`)_ | Version-controlled zsh functions (body-only, autoloaded) |
 
 ## Adding a new zsh config module
 
@@ -20,8 +21,16 @@ No wiring needed — `.zshrc` loops over both directories.
 
 ## Adding a new function
 
-Drop a file into `config/zsh/functions/`. It's autoloaded by name
-(`autoload -Uz` loops over the directory). Use zsh syntax.
+For version-controlled functions (shipped with dotfiles):
+
+Drop a file into `share/zsh/functions/`. It's autoloaded by filename
+(`autoload -Uz` loops over the directory). Use zsh body-only syntax
+(no `function name() {` wrapper — just the function body).
+
+For host-local functions (not tracked in git):
+
+Drop a file into `~/.local/share/zsh/functions/`. Same convention —
+body only, autoloaded by filename.
 
 ## Adding a new bin script
 
@@ -29,7 +38,7 @@ Drop a portable sh/bash script into `local/bin/`. Run `rcup` to
 symlink it to `~/.local/bin/`. Callable from any context (tmux,
 DE keybindings, editor, cron).
 
-## `local/bin/` vs `config/zsh/functions/`
+## `local/bin/` vs `share/zsh/functions/`
 
 See `docs/scripts-vs-functions.md`.
 
@@ -38,8 +47,7 @@ See `docs/scripts-vs-functions.md`.
 ```sh
 rcup        # create/update all symlinks
 lsrc -v     # dry-run: show what would be linked
-rcup -x     # remove broken symlinks
-rcup -f     # force overwrite existing files
+rcup -f     # force overwrite (replaces existing files)
 ```
 
 `.rcrc` defines which directories to scan — currently
