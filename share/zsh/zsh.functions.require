@@ -1,9 +1,15 @@
+local zsh_functions_dir=${ZSHARE:+"$ZSHARE/functions"}
+if [[ -z "$zsh_functions_dir" ]]; then
+  local dotfiles_root=${DOTFILES_ROOT_DIR:-${${(%):-%x}:A:h:h:h}}
+  zsh_functions_dir="$dotfiles_root/share/zsh/functions"
+fi
+
 fpath=(
-  "$ZSHARE/functions"
+  "$zsh_functions_dir"
   "$HOME/.local/share/zsh/functions"
   $fpath
 )
 
-for dir in "$ZSHARE/functions" "$HOME/.local/share/zsh/functions"; do
+for dir in "$zsh_functions_dir" "$HOME/.local/share/zsh/functions"; do
   [[ -d "$dir" ]] && for f in "$dir"/*(N-.); do autoload -Uz "${f:t}"; done
 done
