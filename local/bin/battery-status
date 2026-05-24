@@ -1,0 +1,18 @@
+#!/bin/bash
+# Output battery status styled for catppuccin tmux status line.
+# Reads theme colors from tmux options, calls tmux-battery scripts.
+
+BATTERY_DIR="$HOME/.config/tmux/plugins/tmux-battery/scripts"
+
+icon=$("$BATTERY_DIR/battery_icon.sh")
+percentage=$("$BATTERY_DIR/battery_percentage.sh")
+
+# Read catppuccin theme colors from tmux options
+lavender=$(tmux show-option -gqv "@thm_lavender" 2>/dev/null)
+crust=$(tmux show-option -gqv "@thm_crust" 2>/dev/null)
+surface0=$(tmux show-option -gqv "@thm_surface_0" 2>/dev/null)
+fg=$(tmux show-option -gqv "@thm_fg" 2>/dev/null)
+
+# Nerd font glyphs matching the status-line aesthetic
+printf "#[fg=%s,bg=default]█#[fg=%s,bg=%s] %s #[fg=%s,bg=%s] %s" \
+  "$lavender" "$crust" "$lavender" "$icon" "$fg" "$surface0" "$percentage"

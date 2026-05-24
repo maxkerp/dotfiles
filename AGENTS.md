@@ -2,60 +2,66 @@
 
 Personal dotfiles managed with [rcm](https://github.com/thoughtbot/rcm).
 
+## Auto-setup
+
+```sh
+git clone git@github.com:maxkerp/dotfiles.git ~/Git/dotfiles
+env RCRC=$HOME/Git/dotfiles/rcrc rcup   # first time only
+rcup                                      # subsequent
+```
+
 ## Structure
 
 | Repo path | Linked to | Purpose |
-|---|---|---|---|
-| `config/tmux/` | `~/.config/tmux/` | Tmux config files |
-| `config/git/` | `~/.config/git/` | Git config (auto-read via XDG) |
-| `config/zsh/` | `~/.config/zsh/` | Zsh config (`.` prefix → file itself) |
-| `local/bin/` | `~/.local/bin/` | Standalone scripts on `$PATH` |
-| `share/zsh/functions/` | _(referenced by `$DOTFILES_ROOT_DIR`)_ | Version-controlled zsh functions (body-only, autoloaded) |
+|---|---|---|
+| `zshenv` (root) | `~/.zshenv` | Sets `ZDOTDIR=~/.config/zsh`, sources `$ZDOTDIR/.zshenv` |
+| `config/zsh/zshrc` → `$ZDOTDIR/.zshrc` | | Sources `config/*.zsh` before compinit, `config-post/*.zsh` after |
+| `config/zsh/zshenv` → `$ZDOTDIR/.zshenv` | | Minimal env (`ZSH_CACHE_DIR`), for all zsh sessions |
+| `config/zsh/config/` | | Sourced pre-compinit, sorted (`NN-name.zsh`) |
+| `config/zsh/config-post/` | | Sourced post-compinit |
+| `config/zsh/completions/` | | In `fpath`, picked up by compinit |
+| `config/tmux/` | `~/.config/tmux/` | Tmux config (prefix: `C-s`, not `C-b`) |
+| `config/git/` | `~/.config/git/` | Git config (XDG), pager=`delta`, conflict=`zdiff3` |
+| `local/bin/` | `~/.local/bin/` via `PATH` (not rcm) | Portable sh scripts on `$PATH` |
+| `share/zsh/functions/` | via `fpath` + `autoload` | Version-controlled zsh functions |
+| `config/mise/config.toml` | mise config | Tools managed by mise (fzf, ripgrep, lazygit, etc.) |
 
-## Adding a new zsh config module
+## Key env vars
 
-Drop `NN-name.zsh` into `config/zsh/config/` (sourced before compinit)
-or `config/zsh/config-post/` (sourced after). Sorted by filename.
+- `DOTFILES_ROOT_DIR` — defaults to `$HOME/Git/dotfiles`, overridable
+- `ZSHARE` — `$DOTFILES_ROOT_DIR/share/zsh` shorthand
 
-No wiring needed — `.zshrc` loops over both directories.
+## rcm notes
 
-## Adding a new function
+- `rcrc` EXCLUDES: `.gitignore`, `Aptfile`, `AGENTS.md`, `README*.md`, `LICENSE`, `docs`, `utils`, `local/bin`
+- `local/bin/` is on `$PATH` via `config/zsh/config/30-exports.zsh`, not via rcm symlinks
+- Additionally scans `$HOME/dotfiles-local/` for host-local overrides
+- If repo is at `~/Git/dotfiles`, needs `ln -s ~/Git/dotfiles ~/dotfiles` (otherwise `~/.rcrc` won't resolve)
 
-For version-controlled functions (shipped with dotfiles):
+## Adding a zsh config module
 
-Drop a file into `share/zsh/functions/`. It's autoloaded by filename
-(`autoload -Uz` loops over the directory). Use zsh body-only syntax
-(no `function name() {` wrapper — just the function body).
+Drop `NN-name.zsh` into `config/zsh/config/` (pre-compinit) or `config/zsh/config-post/` (post-compinit). No wiring needed.
 
-For host-local functions (not tracked in git):
+## Adding a zsh function (body-only)
 
-Drop a file into `~/.local/share/zsh/functions/`. Same convention —
-body only, autoloaded by filename.
+Drop a file (name = function name) into `share/zsh/functions/`. Body-only syntax — no `function name() {` wrapper. Autoloaded by filename.
 
-## Adding a new bin script
+Host-local alternative: `~/.local/share/zsh/functions/`.
 
-Drop a portable sh/bash script into `local/bin/`. Run `rcup` to
-symlink it to `~/.local/bin/`. Callable from any context (tmux,
-DE keybindings, editor, cron).
+**Keep in sync**: the `fpath` + `autoload` loop is duplicated in `config/zsh/zshrc` and `share/zsh/zsh.functions.require` (for standalone scripts). Update both.
 
-## `local/bin/` vs `share/zsh/functions/`
+## Adding a bin script
 
-See `docs/scripts-vs-functions.md`.
+Drop a portable sh/bash script into `local/bin/`. Callable from any context.
 
-## Managing symlinks
+## Local overrides (not tracked)
 
-```sh
-rcup        # create/update all symlinks
-lsrc -v     # dry-run: show what would be linked
-rcup -f     # force overwrite (replaces existing files)
-```
+- `~/.zshrc.local` — sourced at end of `.zshrc`
+- `~/.zsh.secrets` — API keys, chmod 0600
+- `~/.local/share/zsh/functions/` — host-local functions
 
-`.rcrc` defines which directories to scan — currently
-`$HOME/dotfiles-local` and `$HOME/dotfiles`. If the repo is at
-`~/Git/dotfiles`, symlink it: `ln -s ~/Git/dotfiles ~/dotfiles`.
+## Tmux
 
-## Keybindings
-
-- `C-p` in tmux: session switcher (`tmux.sessions`)
-- `C-i` in tmux: init workspace windows (`tmux.init`)
-- `C-b` in tmux: break window into own session (`tmux.attach`)
+- Prefix: `C-s` (send-prefix: `C-s` again)
+- Keybinds: see `config/tmux/keybinds.conf`
+- TPM bootstraps automatically on first launch
