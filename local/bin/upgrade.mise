@@ -2,7 +2,19 @@
 setopt err_return pipe_fail
 
 main() {
-  local updates
+  local updates bump_flag
+  while (( $# )); do
+    case "$1" in
+      --bump) bump_flag="--bump"; shift ;;
+      --bump=*) bump_flag="$1"; shift ;;
+      -b) bump_flag="--bump"; shift ;;
+      -b=*) bump_flag="--bump=${1#*=}"; shift ;;
+      -b[[:alnum:]]*) bump_flag="--bump=${1#-b}"; shift ;;
+      --) shift; break ;;
+      *) shift ;;
+    esac
+  done
+
   updates=$(mise ls --outdated 2>/dev/null)
 
   if [[ -z "$updates" ]]; then
@@ -12,7 +24,7 @@ main() {
     print "$updates"
 
     gum confirm "Upgrade mise-managed tools?" || return 0
-    mise upgrade
+    mise upgrade $bump_flag
   fi
 
   gum confirm "Update mise itself? (mise self-update)" && mise self-update
