@@ -1,5 +1,6 @@
 default-scheme = "base16-catppuccin-mocha"
 default-cycle-ring = "catppuccin-plus"
+hooks = ["$HOME/Git/dotfiles/local/bin/tinty.bootstrap"]
 
 [[rings]]
 name = "catppuccin-plus"
@@ -11,8 +12,6 @@ schemes = [
   "base16-default-dark",
   "base16-tokyo-night-moon",
 ]
-
-hooks = ["$HOME/Git/dotfiles/local/bin/tinty.bootstrap"]
 
 [[items]]
 name = "tinted-shell"
@@ -30,4 +29,4 @@ hook = "cp -f \"$TINTY_THEME_FILE_PATH\" \"$HOME/.config/alacritty/colors.toml\"
 name = "tinted-tmux"
 path = "https://github.com/tinted-theming/tinted-tmux"
 themes-dir = "colors"
-hook = "tmux source-file \"$TINTY_THEME_FILE_PATH\" 2>/dev/null; tmux source-file \"$HOME/.config/tmux/tmux.conf\" 2>/dev/null || true"
+hook = "tmux source-file \"$TINTY_THEME_FILE_PATH\" 2>/dev/null || true"
