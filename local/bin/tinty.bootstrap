@@ -174,7 +174,7 @@ cat > "$TMUX_ARTIFACTS_DIR/tmux-status-custom.conf" <<EOF
 set -g status-style "fg=#${hex05},bg=#${hex01}"
 
 set -g window-status-format \\
-  " #[fg=#${hex05},bg=#${hex0D}] #W "
+  " #[fg=#${hex00},bg=#${hex07}] #W "
 set -g window-status-current-format \\
   " #[fg=#${hex00},bg=#${hex0A}] #W "
 set -g window-status-current-style "fg=#${hex0A},bg=#${hex01}"
