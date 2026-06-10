@@ -178,8 +178,8 @@ set -g status-style "fg=#${hex05},bg=#${hex01}"
 set -g window-status-format \\
   " #[fg=#${hex00},bg=#${hex0D}] #W "
 set -g window-status-current-format \\
-  " #[fg=#${hex00},bg=#${hex0A}] #W "
-set -g window-status-current-style "fg=#${hex0A},bg=#${hex01}"
+  " #[fg=#${hex00},bg=#${hex09}] #W "
+set -g window-status-current-style "fg=#${hex09},bg=#${hex01}"
 set -g window-status-last-style "fg=#${hex0C},bg=#${hex01}"
 
 set -g status-left "#[fg=#${hex00},bg=#${hex0B}] #S "
