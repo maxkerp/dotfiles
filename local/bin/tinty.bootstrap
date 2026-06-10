@@ -189,7 +189,5 @@ EOF
 # ---- reload applications (global hook runs after all item hooks) ----
 # tmux: source full config now that tmux-status-custom.conf exists
 tmux source-file "$HOME/.config/tmux/tmux.conf" 2>/dev/null || true
-# alacritty: touch main config to trigger reload of imported colors.toml
-touch "$HOME/.config/alacritty/alacritty.toml" 2>/dev/null || true
 
 unset _blend _dbg_R _dbg_G _dbg_B _dred_R _dred_G _dred_B _dgrn_R _dgrn_G _dgrn_B _dmp_R _dmp_G _dmp_B _dmb_R _dmb_G _dmb_B _dmc_R _dmc_G _dmc_B _dmy_R _dmy_G _dmy_B min20 min35 plu20 plu35 mpe35 mbl35 mcy35 mye35 dlt TMUX_ARTIFACTS_DIR

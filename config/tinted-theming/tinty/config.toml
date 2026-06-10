@@ -23,7 +23,7 @@ hook = ". \"$TINTY_THEME_FILE_PATH\""
 name = "tinted-alacritty"
 path = "https://github.com/tinted-theming/tinted-alacritty"
 themes-dir = "colors"
-hook = "cp -f \"$TINTY_THEME_FILE_PATH\" \"$HOME/.config/alacritty/colors.toml\""
+write-to-file = ["~/.config/alacritty/alacritty.toml", "# Tinty Start", "# Tinty End"]
 
 [[items]]
 name = "tinted-tmux"
