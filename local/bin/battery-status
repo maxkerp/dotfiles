@@ -3,12 +3,12 @@
 # Reads theme colors from tmux options (set by tinted-tmux).
 
 BATTERY_DIR="$HOME/.config/tmux/plugins/tmux-battery/scripts"
+jdksjdla
+djksajdsa
 
 icon=$("$BATTERY_DIR/battery_icon.sh")
-percentage=$("$BATTERY_DIR/battery_percentage.sh")
 
 # Read base16 theme colors from tmux options
-base0E=$(tmux show-option -gqv "@base0E" 2>/dev/null)  # mauve/purple
 base00=$(tmux show-option -gqv "@base00" 2>/dev/null)  # bg darkest
 base02=$(tmux show-option -gqv "@base02" 2>/dev/null)  # selection bg
 base05=$(tmux show-option -gqv "@base05" 2>/dev/null)  # fg
