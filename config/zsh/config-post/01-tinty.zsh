@@ -10,7 +10,7 @@ tinty_source_shell_theme() {
     unset FZF_DEFAULT_OPTS
     while read -r script; do
       . "$script"
-    done < <(find "$tinty_artifact_dir" -maxdepth 1 \( -type f -o -type l \) -name "*.sh" -newer "$newer_file" 2>/dev/null)
+    done < <(find "$tinty_artifact_dir" -maxdepth 1 \( -type f -o -type l \) -name "*.sh" 2>/dev/null)
 
     unset tinty_artifact_dir
   fi
@@ -22,6 +22,5 @@ tinty_source_shell_theme() {
 
 if command -v tinty &>/dev/null; then
   alias tinty=tinty_source_shell_theme
-  # Re-apply last scheme at shell start (sources shell/fzf env vars)
   tinty_source_shell_theme init &>/dev/null
 fi
