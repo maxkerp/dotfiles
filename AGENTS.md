@@ -25,6 +25,7 @@ rcup                                      # subsequent
 | `local/bin/` | `~/.local/bin/` via `PATH` (not rcm) | Portable sh scripts on `$PATH` |
 | `share/zsh/functions/` | via `fpath` + `autoload` | Version-controlled zsh functions |
 | `config/mise/config.toml` | mise config | Tools managed by mise (fzf, ripgrep, lazygit, etc.) |
+| `scripts/` | Not rcm-synced | Bootstrap / install scripts for new machines (see Bootstrapping) |
 
 ## Key env vars
 
@@ -33,10 +34,27 @@ rcup                                      # subsequent
 
 ## rcm notes
 
-- `rcrc` EXCLUDES: `.gitignore`, `Aptfile`, `AGENTS.md`, `README*.md`, `LICENSE`, `docs`, `utils`, `local/bin`
+- `rcrc` EXCLUDES: `.gitignore`, `Aptfile`, `AGENTS.md`, `README*.md`, `LICENSE`, `docs`, `utils`, `local/bin`, `scripts/`
 - `local/bin/` is on `$PATH` via `config/zsh/config/30-exports.zsh`, not via rcm symlinks
 - Additionally scans `$HOME/dotfiles-local/` for host-local overrides
 - If repo is at `~/Git/dotfiles`, needs `ln -s ~/Git/dotfiles ~/dotfiles` (otherwise `~/.rcrc` won't resolve)
+
+## Bootstrapping a new machine
+
+1. `git clone git@github.com:maxkerp/dotfiles.git ~/Git/dotfiles`
+2. Run `scripts/install-plugins.sh` to clone zsh plugins (fzf-tab, zsh-autosuggestions)
+3. `env RCRC=$HOME/Git/dotfiles/rcrc rcup`
+4. `mise install` to install all binary tools (zsh-patina, fzf, ripgrep, starship, etc.)
+
+## Zsh plugins (not managed by rcm / mise)
+
+Tracked via `scripts/install-plugins.sh`, sourced from `~/.local/share/zsh/plugins/`:
+
+| Plugin | Source in | Purpose |
+|---|---|---|
+| `Aloxaf/fzf-tab` | `config-post/10-fzf-tab.zsh` | fzf-powered completion UI |
+| `zsh-users/zsh-autosuggestions` | `config-post/11-zsh-autosuggestions.zsh` | Fish-like command suggestions |
+| `michel-kraemer/zsh-patina` | `config-post/12-zsh-patina.zsh` (via mise) | Rust syntax highlighting |
 
 ## Adding a zsh config module
 

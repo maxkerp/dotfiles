@@ -24,3 +24,10 @@ starship = "latest"
 television = "latest"
 yq = "latest"
 zoxide = "latest"
+
+[tools."github:michel-kraemer/zsh-patina"]
+version = "latest"
+
+[tools."github:michel-kraemer/zsh-patina".platforms]
+linux-x64   = { asset_pattern = "zsh-patina-*-x86_64-unknown-linux-gnu.tar.gz" }
+macos-arm64 = { asset_pattern = "zsh-patina-*-aarch64-apple-darwin.tar.gz" }
