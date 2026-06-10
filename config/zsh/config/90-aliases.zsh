@@ -19,6 +19,9 @@ alias cp='cp -iv'
 alias mkdir='mkdir -vp'
 alias rmdir='rmdir -v'
 
+# ── bat (theme follows tinty shell ANSI colors) ────────────────────────────────
+alias bat='bat --theme="base16-256"'
+
 # ── grep ───────────────────────────────────────────────────────────────────────
 alias grep='grep --color'
 alias ip='ip -color'

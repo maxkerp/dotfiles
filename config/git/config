@@ -1,5 +1,5 @@
 [include]
-	path = catppuccin.gitconfig
+	path = ~/.local/share/tinted-theming/tinty/tinted-delta-configs-file.gitconfig
 
 [user]
   name = Maximilian Kerp
@@ -51,6 +51,4 @@
 [color]
   ui = auto
 [delta]
-    # side-by-side: line number color is broken...
-    features = line-numbers catppuccin-mocha
     navigate = true  # use n and N to move between diff sections

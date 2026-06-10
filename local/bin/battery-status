@@ -1,18 +1,24 @@
 #!/bin/bash
-# Output battery status styled for catppuccin tmux status line.
-# Reads theme colors from tmux options, calls tmux-battery scripts.
+# Output battery status styled for base16 tmux status line.
+# Reads theme colors from tmux options (set by tinted-tmux).
 
 BATTERY_DIR="$HOME/.config/tmux/plugins/tmux-battery/scripts"
 
 icon=$("$BATTERY_DIR/battery_icon.sh")
 percentage=$("$BATTERY_DIR/battery_percentage.sh")
 
-# Read catppuccin theme colors from tmux options
-lavender=$(tmux show-option -gqv "@thm_lavender" 2>/dev/null)
-crust=$(tmux show-option -gqv "@thm_crust" 2>/dev/null)
-surface0=$(tmux show-option -gqv "@thm_surface_0" 2>/dev/null)
-fg=$(tmux show-option -gqv "@thm_fg" 2>/dev/null)
+# Read base16 theme colors from tmux options
+base0E=$(tmux show-option -gqv "@base0E" 2>/dev/null)  # mauve/purple
+base00=$(tmux show-option -gqv "@base00" 2>/dev/null)  # bg darkest
+base02=$(tmux show-option -gqv "@base02" 2>/dev/null)  # selection bg
+base05=$(tmux show-option -gqv "@base05" 2>/dev/null)  # fg
+
+# Fallback to catppuccin mocha if tmux not running
+base0E="${base0E:-#cba6f7}"
+base00="${base00:-#1e1e2e}"
+base02="${base02:-#313244}"
+base05="${base05:-#cdd6f4}"
 
 # Nerd font glyphs matching the status-line aesthetic
 printf "#[fg=%s,bg=default]█#[fg=%s,bg=%s] %s #[fg=%s,bg=%s] %s" \
-  "$lavender" "$crust" "$lavender" "$icon" "$fg" "$surface0" "$percentage"
+  "$base0E" "$base00" "$base0E" "$icon" "$base05" "$base02" "$percentage"

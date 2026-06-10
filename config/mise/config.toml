@@ -19,11 +19,13 @@ lsd = "latest"
 opencode = "latest"
 oxker = "latest"
 pi = "latest"
+"cargo:tinty" = "latest"
 ripgrep = "latest"
 starship = "latest"
 television = "latest"
 yq = "latest"
 zoxide = "latest"
+rust = "latest"
 
 [tools."github:michel-kraemer/zsh-patina"]
 version = "latest"

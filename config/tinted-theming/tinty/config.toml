@@ -1,0 +1,27 @@
+default-scheme = "base16-catppuccin-mocha"
+
+hooks = ["$HOME/Git/dotfiles/local/bin/tinty.bootstrap"]
+
+[[items]]
+name = "tinted-shell"
+path = "https://github.com/tinted-theming/tinted-shell"
+themes-dir = "scripts"
+hook = ". \"$TINTY_THEME_FILE_PATH\""
+
+[[items]]
+name = "tinted-delta"
+path = "https://github.com/tinted-theming/tinted-delta"
+themes-dir = "configs"
+supported-systems = ["base16", "base24"]
+
+[[items]]
+name = "tinted-alacritty"
+path = "https://github.com/tinted-theming/tinted-alacritty"
+themes-dir = "colors"
+hook = "cp -f \"$TINTY_THEME_FILE_PATH\" \"$HOME/.config/alacritty/colors.toml\""
+
+[[items]]
+name = "tinted-tmux"
+path = "https://github.com/tinted-theming/tinted-tmux"
+themes-dir = "colors"
+hook = "tmux source-file \"$TINTY_THEME_FILE_PATH\" 2>/dev/null; tmux source-file \"$HOME/.config/tmux/tmux.conf\" 2>/dev/null || true"
