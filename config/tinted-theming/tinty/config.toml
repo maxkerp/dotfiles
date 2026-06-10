@@ -9,12 +9,6 @@ themes-dir = "scripts"
 hook = ". \"$TINTY_THEME_FILE_PATH\""
 
 [[items]]
-name = "tinted-delta"
-path = "https://github.com/tinted-theming/tinted-delta"
-themes-dir = "configs"
-supported-systems = ["base16", "base24"]
-
-[[items]]
 name = "tinted-alacritty"
 path = "https://github.com/tinted-theming/tinted-alacritty"
 themes-dir = "colors"
