@@ -45,6 +45,7 @@ alias u='git add -u'
 alias aptinfo='apt list --installed | fzf | cut -d'/' -f1 | xargs apt show'
 alias br='git branch | grep -v '^\*' | fzf --reverse --height=40% | xargs git checkout'
 alias tldrs='tldr -l | tr -s ", " "\n" | fzf --reverse --preview="tldr {}" --preview-window 70%'
+alias colorscheme='tinty list | sort | fzf --preview="tinty apply {}; bat --color=always README.md"'
 
 # ── Maintenance ────────────────────────────────────────────────────────────────
 

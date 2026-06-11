@@ -1,6 +1,7 @@
 default-scheme = "base16-catppuccin-mocha"
 default-cycle-ring = "catppuccin-plus"
-hooks = ["$HOME/Git/dotfiles/local/bin/tinty.bootstrap"]
+
+hooks = ["tmux source-file ~/.config/tmux/tmux.conf"]
 
 [[rings]]
 name = "catppuccin-plus"
@@ -14,19 +15,36 @@ schemes = [
 ]
 
 [[items]]
-name = "tinted-shell"
 path = "https://github.com/tinted-theming/tinted-shell"
+name = "tinted-shell"
 themes-dir = "scripts"
-hook = ". \"$TINTY_THEME_FILE_PATH\""
+hook = ". %f"
 
+# Alacritty terminal colors
 [[items]]
-name = "tinted-alacritty"
-path = "https://github.com/tinted-theming/tinted-alacritty"
-themes-dir = "colors"
-write-to-file = ["~/.config/alacritty/alacritty.toml", "# Tinty Start", "# Tinty End"]
+name = "tinted-terminal"
+path = "https://github.com/tinted-theming/tinted-terminal"
+themes-dir = "themes/alacritty"
+hook = "cp -f %f ~/.config/alacritty/colors.toml && touch ~/.config/alacritty/alacritty.toml"
+supported-systems = ["base16", "base24"]
 
+# tmux colors (panes, status bar)
+#[[items]]
+#name = "tinted-tmux"
+#path = "https://github.com/tinted-theming/tinted-tmux"
+#themes-dir = "colors"
+#hook = "tmux run 2> /dev/null && tmux source-file %f"
+
+# fzf colors
 [[items]]
-name = "tinted-tmux"
-path = "https://github.com/tinted-theming/tinted-tmux"
-themes-dir = "colors"
-hook = "tmux source-file \"$TINTY_THEME_FILE_PATH\" 2>/dev/null || true"
+name = "tinted-fzf"
+path = "https://github.com/tinted-theming/tinted-fzf"
+themes-dir = "sh"
+hook = ". %f"
+
+# Delta (git diff pager) colors
+[[items]]
+path = "https://github.com/tinted-theming/tinted-delta"
+name = "tinted-delta"
+themes-dir = "configs"
+supported-systems = ["base16", "base24"]

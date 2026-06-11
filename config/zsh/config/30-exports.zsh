@@ -21,3 +21,13 @@ export GIT_FUZZY_REFLOG_WORKING_COPY_KEY="Ctrl-T"
 
 # Carapace bridges: borrow completions from other shells as fallback
 export CARAPACE_BRIDGES='zsh,fish,bash'
+
+# Tinted-shell: emit BASE16_COLOR_{00..0F}_HEX env vars when sourced
+export TINTED_SHELL_ENABLE_BASE16_VARS=1
+export TINTED_SHELL_ENABLE_BASE16_VARS=1
+export TINTED_SHELL_ENABLE_BASE24_VARS=1
+export TINTED_SHELL_ENABLE_TINDET8_VARS=1
+
+
+export TINTED_TMUX_OPTION_ACTIVE=1
+export TINTED_TMUX_OPTION_STATUSBAR=1
